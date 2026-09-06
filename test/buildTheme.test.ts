@@ -9,15 +9,19 @@ import { buildTheme } from "../src/build/buildTheme.js";
 import { ColorTokenSet } from "../src/tokens/types.js";
 
 describe("buildTheme compiler", () => {
-  it("compiles DuskGroveDark into a valid theme structure", () => {
+  it("compiles GloamingDark into a valid theme structure", () => {
     const theme = buildTheme(DuskGroveDark);
 
-    expect(theme.name).toBe("DuskGrove");
+    expect(theme.name).toBe("Gloaming");
     expect(theme.type).toBe("dark");
     expect(theme.semanticHighlighting).toBe(true);
     expect(typeof theme.colors).toBe("object");
     expect(Array.isArray(theme.tokenColors)).toBe(true);
     expect(typeof theme.semanticTokenColors).toBe("object");
+  });
+
+  it("guarantees syntax.variable intentionally equals ui.fgPrimary", () => {
+    expect(DuskGroveDark.syntax.variable).toBe(DuskGroveDark.ui.fgPrimary);
   });
 
   it("populates all required workbench UI colors", () => {

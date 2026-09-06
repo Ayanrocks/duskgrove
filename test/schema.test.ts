@@ -16,7 +16,7 @@ describe("Theme schema validation", () => {
     expect(() => validateTheme(theme)).not.toThrow();
 
     const validated = validateTheme(theme);
-    expect(validated.name).toBe("DuskGrove");
+    expect(validated.name).toBe("Gloaming");
     expect(validated.type).toBe("dark");
   });
 
@@ -61,7 +61,7 @@ describe("Theme schema validation", () => {
   });
 
   it("validates any generated theme JSON file on disk", () => {
-    const themePath = path.resolve(__dirname, "../themes/DuskGrove-dark-color-theme.json");
+    const themePath = path.resolve(__dirname, "../themes/gloaming-dark-color-theme.json");
 
     if (fs.existsSync(themePath)) {
       const rawContent = fs.readFileSync(themePath, "utf-8");

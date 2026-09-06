@@ -7,6 +7,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { fileURLToPath } from "node:url";
+import * as prettier from "prettier";
 import { tokenVariants } from "../tokens/index.js";
 import { buildTheme } from "./buildTheme.js";
 import { validateTheme } from "../validate/schema.js";
@@ -73,9 +74,14 @@ export async function generateThemes(): Promise<void> {
       throw new Error(`Contrast validation failed for variant "${variant.meta.id}":\n${failures}`);
     }
 
-    // 4. Write theme JSON
-    const jsonContent = JSON.stringify(theme, null, 2) + "\n";
-    fs.writeFileSync(outputPath, jsonContent, "utf-8");
+    // 4. Write theme JSON formatted with Prettier
+    const rawJson = JSON.stringify(theme, null, 2) + "\n";
+    const prettierConfig = (await prettier.resolveConfig(outputPath)) || {};
+    const formattedJson = await prettier.format(rawJson, {
+      ...prettierConfig,
+      parser: "json",
+    });
+    fs.writeFileSync(outputPath, formattedJson, "utf-8");
     console.log(`     Wrote ${path.relative(ROOT_DIR, outputPath)}`);
 
     // 5. Track for package.json contributes.themes

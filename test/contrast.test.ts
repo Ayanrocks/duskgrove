@@ -46,6 +46,42 @@ describe("WCAG relative luminance and contrast engine", () => {
     }
   });
 
+  it("ensures all 10 syntax roles pass contrast thresholds against bgEditor", () => {
+    const bg = DuskGroveDark.ui.bgEditor;
+    const syntax = DuskGroveDark.syntax;
+
+    // Body-weight / primary syntax roles (>= 4.5:1)
+    const primaryRoles: Array<keyof typeof syntax> = [
+      "keyword",
+      "string",
+      "numberConstant",
+      "function",
+      "typeClass",
+      "variable",
+      "tag",
+      "attribute",
+    ];
+
+    for (const role of primaryRoles) {
+      const ratio = calculateContrastRatio(syntax[role], bg);
+      expect(
+        ratio,
+        `Syntax role ${role} (${syntax[role]}) failed contrast check: ${ratio} < 4.5:1`,
+      ).toBeGreaterThanOrEqual(4.5);
+    }
+
+    // De-emphasized roles (>= 3.0:1)
+    const deEmphasizedRoles: Array<keyof typeof syntax> = ["comment", "operatorPunctuation"];
+
+    for (const role of deEmphasizedRoles) {
+      const ratio = calculateContrastRatio(syntax[role], bg);
+      expect(
+        ratio,
+        `Syntax role ${role} (${syntax[role]}) failed contrast check: ${ratio} < 3.0:1`,
+      ).toBeGreaterThanOrEqual(3.0);
+    }
+  });
+
   it("validates that all registered variants pass contrast checks", () => {
     for (const variant of tokenVariants) {
       const report = validateVariantContrast(variant);

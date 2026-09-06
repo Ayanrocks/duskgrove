@@ -5,7 +5,7 @@
  */
 
 import { ColorTokenSet } from "./types.js";
-import { GloamingDark, DuskGroveDark } from "./gloaming-dark.js";
+import { GloamingDark } from "./gloaming-dark.js";
 
 export * from "./types.js";
 export * from "./gloaming-dark.js";

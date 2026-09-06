@@ -22,17 +22,23 @@ export const GloamingDark: ColorTokenSet = {
     fgMuted: "#8A95A5",
     fgPrimary: "#B9C6AE",
   },
+  // Design rationale: two hue families only — a warm orange family (`keyword`, `tag`, `attribute`)
+  // for declarative/structural constructs, and a sage/teal family (`function`, `typeClass`,
+  // string, `numberConstant`, `variable`) for everything else, with `variable` intentionally
+  // matching `ui.fgPrimary` so the most frequent token type recedes into body text rather
+  // than competing for attention. `comment` and `operatorPunctuation` stay desaturated and
+  // low-contrast by design.
   syntax: {
-    keyword: "#A68FD1",
-    string: "#A3C98F",
-    numberConstant: "#D9B97A",
-    function: "#8AB4D8",
-    typeClass: "#7FC4B8",
-    variable: "#C7CDB9",
-    comment: "#5F665A",
-    operatorPunctuation: "#6F6A7A",
-    tag: "#D18FA8",
-    attribute: "#C9A875",
+    keyword: "#E2A06E",
+    string: "#A9C9A0",
+    numberConstant: "#C2CBA0",
+    function: "#72B5A0",
+    typeClass: "#8FC9B8",
+    variable: "#B9C6AE",
+    comment: "#5B6A5E",
+    operatorPunctuation: "#6C7A70",
+    tag: "#C97D46",
+    attribute: "#D9B98A",
   },
   semantic: {
     error: "#D9707A",

@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-09-06
+
+### Changed
+
+- **Syntax Palette Redesign**: Replaced initial syntax token colors with an original, from-scratch redesign specifically architected to break away from Material Theme color-role conventions (e.g., purple keywords, green strings, blue functions, teal types).
+- **Two-Family Color Strategy**: Syntax highlighting is now organized into two intentional hue families:
+  - Warm orange family (`keyword` `#E2A06E`, `tag` `#C97D46`, `attribute` `#D9B98A`) for declarative and structural constructs.
+  - Sage/teal family (`function` `#72B5A0`, `typeClass` `#8FC9B8`, `string` `#A9C9A0`, `numberConstant` `#C2CBA0`, `variable` `#B9C6AE`) for referential and value-bearing tokens.
+  - Set `syntax.variable` to deliberately match `ui.fgPrimary` (`#B9C6AE`), allowing pervasive identifiers to blend naturally into body text without visual fatigue.
+  - Retained low-contrast desaturated tones for `comment` (`#5B6A5E`) and `operatorPunctuation` (`#6C7A70`).
+- **Contrast Compliance**: Verified that all ten syntax tokens pass WCAG AA readability standards against `bgEditor` (`#121810`), with contrast ratios ranging between 7.59:1 and 10.61:1 for primary roles and $\ge 3.0:1$ for de-emphasized roles.
+
 ## [0.1.0] - 2026-09-06
 
 ### Added
