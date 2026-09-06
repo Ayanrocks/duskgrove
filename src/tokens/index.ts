@@ -10,7 +10,16 @@ import { GloamingDark } from "./gloaming-dark.js";
 export * from "./types.js";
 export * from "./gloaming-dark.js";
 
+export const DuskGroveDark: ColorTokenSet = {
+  ...GloamingDark,
+  meta: {
+    id: "DuskGrove-dark",
+    label: "DuskGrove",
+    type: "dark",
+  },
+};
+
 /**
  * Registry of all DuskGrove / Gloaming color variants.
  */
-export const tokenVariants: ColorTokenSet[] = [GloamingDark];
+export const tokenVariants: ColorTokenSet[] = [GloamingDark, DuskGroveDark];

@@ -43,6 +43,11 @@
         "label": "Gloaming",
         "uiTheme": "vs-dark",
         "path": "./themes/gloaming-dark-color-theme.json"
+      },
+      {
+        "label": "DuskGrove",
+        "uiTheme": "vs-dark",
+        "path": "./themes/DuskGrove-dark-color-theme.json"
       }
     ]
   },
