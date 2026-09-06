@@ -1,0 +1,12 @@
+.github/**
+.vscode/**
+src/**
+test/**
+node_modules/**
+.eslintrc*
+.prettier*
+.editorconfig
+tsconfig.json
+vitest.config.ts
+**/*.ts
+**/*.map

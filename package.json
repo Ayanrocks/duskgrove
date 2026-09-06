@@ -1,0 +1,61 @@
+{
+  "name": "duskgrove",
+  "displayName": "DuskGrove",
+  "description": "A modular, elegant dark VS Code color theme inspired by twilight forest canopies.",
+  "version": "0.1.0",
+  "publisher": "duskgrove",
+  "type": "module",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "color-theme",
+    "dark",
+    "dusk",
+    "forest",
+    "accessible"
+  ],
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/duskgrove/duskgrove-theme"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run build:themes",
+    "build:themes": "tsx src/build/generate.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format:check": "prettier --check \"**/*.{ts,json,md,yml,yaml}\"",
+    "format": "prettier --write \"**/*.{ts,json,md,yml,yaml}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "package": "vsce package --no-dependencies"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "DuskGrove",
+        "uiTheme": "vs-dark",
+        "path": "./themes/DuskGrove-dark-color-theme.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vscode/vsce": "^3.2.1",
+    "eslint": "^8.57.1",
+    "prettier": "^3.4.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "zod": "^3.24.1"
+  }
+}

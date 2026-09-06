@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Audit production dependencies (zero runtime deps)
+        run: npm audit --omit=dev
+
+      - name: Type check (TypeScript)
+        run: npm run typecheck
+
+      - name: Lint code
+        run: npm run lint
+
+      - name: Verify code formatting
+        run: npm run format:check
+
+      - name: Run test suite (Schema & Contrast checks)
+        run: npm run test
+
+      - name: Build theme artifacts
+        run: npm run build:themes
+
+      - name: Verify build reproducibility (no unstaged changes)
+        run: |
+          git status --porcelain
+          git diff --exit-code
