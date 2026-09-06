@@ -1,16 +1,16 @@
 /**
- * @file DuskGrove-dark.ts
- * @description Default dark variant for DuskGrove.
+ * @file gloaming-dark.ts
+ * @description Default dark variant for Gloaming (DuskGrove).
  * Inspired by twilight woodland canopies: deep mossy forest shadows (#121810),
  * pine bark (#1A2116), dusky heather (#474056), and sage canopy highlights (#B9C6AE).
  */
 
 import { ColorTokenSet } from "./types.js";
 
-export const DuskGroveDark: ColorTokenSet = {
+export const GloamingDark: ColorTokenSet = {
   meta: {
-    id: "DuskGrove-dark",
-    label: "DuskGrove",
+    id: "gloaming-dark",
+    label: "Gloaming",
     type: "dark",
   },
   ui: {
@@ -41,3 +41,5 @@ export const DuskGroveDark: ColorTokenSet = {
     success: "#8FC98A",
   },
 };
+
+export const DuskGroveDark = GloamingDark;
