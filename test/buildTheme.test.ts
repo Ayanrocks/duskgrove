@@ -20,8 +20,10 @@ describe("buildTheme compiler", () => {
     expect(typeof theme.semanticTokenColors).toBe("object");
   });
 
-  it("guarantees syntax.variable intentionally equals ui.fgPrimary", () => {
-    expect(DuskGroveDark.syntax.variable).toBe(DuskGroveDark.ui.fgPrimary);
+  it("guards variable from accidental drift into foreground or accent families", () => {
+    expect(DuskGroveDark.syntax.variable).not.toBe(DuskGroveDark.ui.fgPrimary);
+    expect(DuskGroveDark.syntax.variable).not.toBe(DuskGroveDark.syntax.function);
+    expect(DuskGroveDark.syntax.variable).not.toBe(DuskGroveDark.syntax.keyword);
   });
 
   it("populates all required workbench UI colors", () => {

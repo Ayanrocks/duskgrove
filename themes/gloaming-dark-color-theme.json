@@ -214,7 +214,7 @@
       "name": "Variables, parameters, and identifiers",
       "scope": ["variable", "variable.other", "variable.parameter", "meta.parameter"],
       "settings": {
-        "foreground": "#B9C6AE"
+        "foreground": "#A2A096"
       }
     },
     {
@@ -310,11 +310,11 @@
     "method": "#72B5A0",
     "method.declaration": "#72B5A0",
     "macro": "#72B5A0",
-    "variable": "#B9C6AE",
-    "variable.declaration": "#B9C6AE",
-    "variable.readonly": "#B9C6AE",
-    "variable.defaultLibrary": "#B9C6AE",
-    "parameter": "#B9C6AE",
+    "variable": "#A2A096",
+    "variable.declaration": "#A2A096",
+    "variable.readonly": "#A2A096",
+    "variable.defaultLibrary": "#A2A096",
+    "parameter": "#A2A096",
     "property": "#D9B98A",
     "property.declaration": "#D9B98A",
     "property.readonly": "#D9B98A",

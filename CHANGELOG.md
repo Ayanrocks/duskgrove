@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-09-06
+
+### Changed
+
+- **Dedicated Neutral for `variable`**: Updated `syntax.variable` from foreground-matched (`#B9C6AE`) to a dedicated warm-neutral gray tone (`#A2A096`, ~5% saturation).
+  - **Rationale**: Eliminates perceived "too much green" across files with heavy identifier density, ensuring pervasive identifiers read as calm, uncolored body text.
+  - **Hierarchy Restoration**: Sharpens the visual contrast between accent roles (warm orange declarative family vs. sage/teal callable/value family) and identifier references.
+  - **Accessibility & Contrast**: Maintained strong 6.88:1 contrast ratio against canvas background `ui.bgEditor` (`#121810`), and verified 3.75:1 contrast against selection highlight `ui.bgSelection` (`#474056`).
+- **Regression Guard**: Added test assertions ensuring `syntax.variable` remains distinct from `ui.fgPrimary`, `syntax.function`, and `syntax.keyword`.
+
 ## [0.2.0] - 2026-09-06
 
 ### Changed
