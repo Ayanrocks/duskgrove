@@ -112,7 +112,7 @@
     "gitDecoration.addedResourceForeground": "#8FC98A",
     "gitDecoration.modifiedResourceForeground": "#E0B168",
     "gitDecoration.deletedResourceForeground": "#D9707A",
-    "gitDecoration.untrackedResourceForeground": "#A9C9A0",
+    "gitDecoration.untrackedResourceForeground": "#82A6C0",
     "gitDecoration.ignoredResourceForeground": "#8A95A5",
     "terminal.background": "#121810",
     "terminal.foreground": "#B9C6AE",
@@ -167,7 +167,7 @@
         "punctuation.definition.string"
       ],
       "settings": {
-        "foreground": "#A9C9A0"
+        "foreground": "#82A6C0"
       }
     },
     {
@@ -327,7 +327,7 @@
     "struct": "#8FC9B8",
     "namespace": "#8FC9B8",
     "keyword": "#E2A06E",
-    "string": "#A9C9A0",
+    "string": "#82A6C0",
     "number": "#C2CBA0",
     "operator": "#6C7A70",
     "comment": {

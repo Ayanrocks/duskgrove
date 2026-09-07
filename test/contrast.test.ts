@@ -97,6 +97,15 @@ describe("WCAG relative luminance and contrast engine", () => {
     expect(selectionRatio).toBeGreaterThanOrEqual(3.0);
   });
 
+  it("confirms string specifically satisfies bgEditor with >= 4.5:1 (approx 7.0:1)", () => {
+    const stringRatio = calculateContrastRatio(
+      DuskGroveDark.syntax.string,
+      DuskGroveDark.ui.bgEditor,
+    );
+    expect(stringRatio).toBeGreaterThanOrEqual(4.5);
+    expect(stringRatio).toBeCloseTo(7.02, 1);
+  });
+
   it("validates that all registered variants pass contrast checks", () => {
     for (const variant of tokenVariants) {
       const report = validateVariantContrast(variant);

@@ -3,15 +3,15 @@
  * @description Unit tests for theme compiler and token completeness.
  */
 import { describe, it, expect } from "vitest";
-import { GloamingDark, DuskGroveDark, tokenVariants } from "../src/tokens/index.js";
+import { DuskGroveDark, tokenVariants } from "../src/tokens/index.js";
 import { buildTheme } from "../src/build/buildTheme.js";
 import { ColorTokenSet } from "../src/tokens/types.js";
 
 describe("buildTheme compiler", () => {
-  it("compiles GloamingDark into a valid theme structure", () => {
-    const theme = buildTheme(GloamingDark);
+  it("compiles DuskGroveDark into a valid theme structure", () => {
+    const theme = buildTheme(DuskGroveDark);
 
-    expect(theme.name).toBe("Gloaming");
+    expect(theme.name).toBe("DuskGrove");
     expect(theme.type).toBe("dark");
     expect(theme.semanticHighlighting).toBe(true);
     expect(typeof theme.colors).toBe("object");

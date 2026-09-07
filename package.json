@@ -2,7 +2,7 @@
   "name": "duskgrove",
   "displayName": "DuskGrove",
   "description": "A modular, elegant dark VS Code color theme inspired by twilight forest canopies.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "publisher": "duskgrove",
   "type": "module",
   "engines": {
@@ -39,11 +39,6 @@
   },
   "contributes": {
     "themes": [
-      {
-        "label": "Gloaming",
-        "uiTheme": "vs-dark",
-        "path": "./themes/gloaming-dark-color-theme.json"
-      },
       {
         "label": "DuskGrove",
         "uiTheme": "vs-dark",

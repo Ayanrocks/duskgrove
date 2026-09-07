@@ -6,17 +6,17 @@
 import { describe, it, expect } from "vitest";
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { GloamingDark, DuskGroveDark } from "../src/tokens/index.js";
+import { DuskGroveDark } from "../src/tokens/index.js";
 import { buildTheme } from "../src/build/buildTheme.js";
 import { validateTheme, vsCodeThemeSchema } from "../src/validate/schema.js";
 
 describe("Theme schema validation", () => {
-  it("successfully validates the compiled GloamingDark theme", () => {
-    const theme = buildTheme(GloamingDark);
+  it("successfully validates the compiled DuskGroveDark theme", () => {
+    const theme = buildTheme(DuskGroveDark);
     expect(() => validateTheme(theme)).not.toThrow();
 
     const validated = validateTheme(theme);
-    expect(validated.name).toBe("Gloaming");
+    expect(validated.name).toBe("DuskGrove");
     expect(validated.type).toBe("dark");
   });
 
@@ -61,7 +61,7 @@ describe("Theme schema validation", () => {
   });
 
   it("validates any generated theme JSON file on disk", () => {
-    const themePath = path.resolve(__dirname, "../themes/gloaming-dark-color-theme.json");
+    const themePath = path.resolve(__dirname, "../themes/DuskGrove-dark-color-theme.json");
 
     if (fs.existsSync(themePath)) {
       const rawContent = fs.readFileSync(themePath, "utf-8");

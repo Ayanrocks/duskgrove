@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2026-09-08
+
+### Changed
+
+- **Locked In `string` Token**: Finalized `syntax.string` to steel-blue/azure (`#82A6C0`, HSL ≈ 205°, 33%, 63%).
+  - **Chromatic Distinction**: Sits 44° clear of the teal zone occupied by `function` (`#72B5A0`, 161°) and `typeClass` (`#8FC9B8`, 162°), eliminating hue collision while maintaining harmonious mid-range saturation and lightness (~30–35% S, ~60–68% L).
+  - **Adjacency Balance**: Resolves visual collision with warm keywords (`#E2A06E`, 26°) and numbers (`#C2CBA0`, 73°) in typical expressions (e.g. `const key = "value"`).
+  - **Contrast Compliance**: Maintains strong 7.02:1 contrast against canvas background `ui.bgEditor` (`#121810`), providing comfortable legibility for multiline and long string literals.
+- **DuskGrove Unification**: Renamed all working-title references from "Gloaming" to "DuskGrove" across token files, identifiers, display names, and theme JSON artifacts.
+
 ## [0.3.0] - 2026-09-06
 
 ### Changed
