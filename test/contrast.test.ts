@@ -11,6 +11,7 @@ import {
 } from "../src/validate/contrast.js";
 import { DuskGroveDark, tokenVariants } from "../src/tokens/index.js";
 import { ColorTokenSet } from "../src/tokens/types.js";
+import { buildTheme } from "../src/build/buildTheme.js";
 
 describe("WCAG relative luminance and contrast engine", () => {
   it("computes standard luminances correctly", () => {
@@ -38,6 +39,32 @@ describe("WCAG relative luminance and contrast engine", () => {
     const fgMutedCheck = report.checks.find((c) => c.name === "fgMuted vs bgEditor");
     expect(fgMutedCheck?.passed).toBe(true);
     expect(fgMutedCheck?.ratio).toBeGreaterThanOrEqual(3.0);
+
+    const accentEditorCheck = report.checks.find((c) => c.name === "accentHighlight vs bgEditor");
+    expect(accentEditorCheck?.passed).toBe(true);
+    expect(accentEditorCheck?.ratio).toBeGreaterThanOrEqual(3.0);
+
+    const accentSidebarCheck = report.checks.find((c) => c.name === "accentHighlight vs bgSidebar");
+    expect(accentSidebarCheck?.passed).toBe(true);
+    expect(accentSidebarCheck?.ratio).toBeGreaterThanOrEqual(3.0);
+
+    const panelActiveFgCheck = report.checks.find(
+      (c) => c.name === "panelTitle.activeForeground vs panel.background",
+    );
+    expect(panelActiveFgCheck?.passed).toBe(true);
+    expect(panelActiveFgCheck?.ratio).toBeGreaterThanOrEqual(3.0);
+
+    const panelInactiveFgCheck = report.checks.find(
+      (c) => c.name === "panelTitle.inactiveForeground vs panel.background",
+    );
+    expect(panelInactiveFgCheck?.passed).toBe(true);
+    expect(panelInactiveFgCheck?.ratio).toBeGreaterThanOrEqual(3.0);
+
+    const panelActiveBorderCheck = report.checks.find(
+      (c) => c.name === "panelTitle.activeBorder vs panel.background",
+    );
+    expect(panelActiveBorderCheck?.passed).toBe(true);
+    expect(panelActiveBorderCheck?.ratio).toBeGreaterThanOrEqual(3.0);
 
     const semanticChecks = report.checks.filter((c) => c.name.startsWith("semantic."));
     for (const check of semanticChecks) {
@@ -104,6 +131,49 @@ describe("WCAG relative luminance and contrast engine", () => {
     );
     expect(stringRatio).toBeGreaterThanOrEqual(4.5);
     expect(stringRatio).toBeCloseTo(7.02, 1);
+  });
+
+  it("confirms accentHighlight satisfies both bgEditor and bgSidebar non-text UI contrast (>= 3.0:1)", () => {
+    const editorRatio = calculateContrastRatio(
+      DuskGroveDark.ui.accentHighlight,
+      DuskGroveDark.ui.bgEditor,
+    );
+    expect(editorRatio).toBeGreaterThanOrEqual(3.0);
+    expect(editorRatio).toBeCloseTo(7.08, 1);
+
+    const sidebarRatio = calculateContrastRatio(
+      DuskGroveDark.ui.accentHighlight,
+      DuskGroveDark.ui.bgSidebar,
+    );
+    expect(sidebarRatio).toBeGreaterThanOrEqual(3.0);
+    expect(sidebarRatio).toBeCloseTo(6.48, 1);
+  });
+
+  it("confirms panelTitle elements satisfy contrast requirements against panel.background (bgEditor)", () => {
+    const theme = buildTheme(DuskGroveDark);
+    const panelBg = theme.colors["panel.background"];
+    expect(panelBg).toBe(DuskGroveDark.ui.bgEditor);
+
+    const activeFgRatio = calculateContrastRatio(
+      theme.colors["panelTitle.activeForeground"],
+      panelBg,
+    );
+    expect(activeFgRatio).toBeGreaterThanOrEqual(3.0);
+    expect(activeFgRatio).toBeCloseTo(10.1, 1);
+
+    const inactiveFgRatio = calculateContrastRatio(
+      theme.colors["panelTitle.inactiveForeground"],
+      panelBg,
+    );
+    expect(inactiveFgRatio).toBeGreaterThanOrEqual(3.0);
+    expect(inactiveFgRatio).toBeCloseTo(5.95, 1);
+
+    const activeBorderRatio = calculateContrastRatio(
+      theme.colors["panelTitle.activeBorder"],
+      panelBg,
+    );
+    expect(activeBorderRatio).toBeGreaterThanOrEqual(3.0);
+    expect(activeBorderRatio).toBeCloseTo(7.08, 1);
   });
 
   it("validates that all registered variants pass contrast checks", () => {

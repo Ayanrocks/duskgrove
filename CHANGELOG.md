@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- **`accentHighlight` UI Token**: Introduced a dedicated highlight and accent color (`#BE9E5F`, warm golden-yellow, H40° S42% L56%) for UI chrome indicators, borders, cursor, and active sliders.
+  - **Design Rationale**: Derived from the warm declarative keyword family (`#E2A06E`, H26° S67% L66%), nudged toward golden-yellow hue (40°) and calibrated down 20% in brightness across RGB channels after in-editor testing to prevent glare against `ui.bgEditor` (`#121810`), while maintaining clear distinction from `attribute` (`#D9B98A`, S51%) and `keyword` (S67%).
+  - **Key Mappings**:
+    - `sash.hoverBorder`: Active split panel resize indicator.
+    - `tab.activeBorderTop`: Active editor tab top border indicator.
+    - `panelTitle.activeBorder`: Active bottom panel indicator.
+    - `focusBorder`: Keyboard focus outline.
+    - `editorCursor.foreground`: Primary text cursor.
+    - `editorBracketMatch.border`: Matching-bracket outline.
+    - `scrollbarSlider.activeBackground`: Scrollbar thumb dragging state.
+    - `minimapSlider.activeBackground`: Minimap slider active/dragging state.
+    - `activityBarBadge.background`: Activity bar notification badge.
+  - **Accessibility & Contrast**: Verified comfortable non-text UI contrast against canvas `ui.bgEditor` (7.08:1) and `ui.bgSidebar` (6.48:1), well above the WCAG 3.0:1 requirement without competing with body text.
+
+### Changed
+
+- **Panel Background Decoupled to `bgEditor`**: Repointed `panel.background` and `panelSectionHeader.background` from `ui.bgPanel` (`#474056`) to `ui.bgEditor` (`#121810`).
+  - **Rationale**: Eliminates the unintended purple block behind the bottom panel container and tab strip (Problems / Output / Debug Console / Terminal / Ports / Test Results), ensuring the panel surface seamlessly extends the dark editor canvas.
+  - **Selection Isolation**: Preserved `ui.bgSelection` (`#474056`) exclusively for genuine editor text and list selection highlights.
+  - **Contrast Verification**: Verified that `panelTitle.activeForeground` (10.1:1), `panelTitle.inactiveForeground` (5.95:1), and `panelTitle.activeBorder` (7.08:1) comfortably exceed WCAG AA requirements ($\ge 3.0:1$) against `panel.background` (`#121810`).
+- **Subtle Organic Container, Window & Sidebar Section Borders (`#5B6A5E33`)**: Applied `#5B6A5E33` (derived from `syntax.comment` at 20% alpha) to container, title bar, and sidebar section borders (`titleBar.border`, `sideBar.border`, `sideBarSectionHeader.border`, `editorGroup.border`, `activityBar.border`, `panel.border`, `panelSection.border`, `panelSectionHeader.border`, and `statusBar.border`). Provides an organic, low-brightness resting divider above the Explorer header and between collapsible sidebar sections.
+- **Preserved Transparent Tab & Sidebar Title Borders**: Kept `sideBarTitle.border`, `tab.border`, `editorGroupHeader.tabsBorder`, and `editorGroupHeader.border` as `#00000000` (eliminating the seam below the Explorer title).
+
 ## [0.4.0] - 2026-09-08
 
 ### Changed

@@ -44,11 +44,102 @@ describe("buildTheme compiler", () => {
       "focusBorder",
       "editorCursor.foreground",
       "titleBar.activeBackground",
+      "sash.hoverBorder",
+      "tab.activeBorderTop",
+      "panelTitle.activeBorder",
+      "editorBracketMatch.border",
+      "scrollbarSlider.activeBackground",
+      "minimapSlider.activeBackground",
+      "activityBarBadge.background",
     ];
 
     for (const key of requiredKeys) {
       expect(theme.colors[key], `Missing UI key: ${key}`).toBeDefined();
       expect(theme.colors[key]).toMatch(/^#[0-9A-Fa-f]{6,8}$/);
+    }
+  });
+
+  it("wires accentHighlight to all designated UI chrome keys", () => {
+    const theme = buildTheme(DuskGroveDark);
+    const expectedAccent = DuskGroveDark.ui.accentHighlight;
+
+    const accentKeys = [
+      "sash.hoverBorder",
+      "tab.activeBorderTop",
+      "panelTitle.activeBorder",
+      "focusBorder",
+      "editorCursor.foreground",
+      "editorBracketMatch.border",
+      "scrollbarSlider.activeBackground",
+      "minimapSlider.activeBackground",
+      "activityBarBadge.background",
+    ];
+
+    for (const key of accentKeys) {
+      expect(theme.colors[key], `Key ${key} does not match accentHighlight`).toBe(expectedAccent);
+    }
+  });
+
+  it("ensures accentHighlight is never applied to syntax or semantic token colors", () => {
+    const theme = buildTheme(DuskGroveDark);
+    const accent = DuskGroveDark.ui.accentHighlight.toLowerCase();
+
+    // TextMate token rules must never use accentHighlight
+    for (const rule of theme.tokenColors) {
+      if (rule.settings.foreground) {
+        expect(rule.settings.foreground.toLowerCase()).not.toBe(accent);
+      }
+    }
+
+    // Semantic tokens must never use accentHighlight
+    for (const [token, value] of Object.entries(theme.semanticTokenColors)) {
+      const color = typeof value === "string" ? value : value.foreground;
+      if (color) {
+        expect(color.toLowerCase(), `Semantic token ${token} uses accentHighlight`).not.toBe(
+          accent,
+        );
+      }
+    }
+  });
+
+  it("maps panel.background to bgEditor and maintains selection isolation", () => {
+    const theme = buildTheme(DuskGroveDark);
+    expect(theme.colors["panel.background"]).toBe(DuskGroveDark.ui.bgEditor);
+    expect(theme.colors["panel.background"]).not.toBe(DuskGroveDark.ui.bgSelection);
+    expect(theme.colors["panelSectionHeader.background"]).toBe(DuskGroveDark.ui.bgEditor);
+    expect(theme.colors["editor.selectionBackground"]).toBeDefined();
+  });
+
+  it("configures subtle resting container borders derived from comment token at 20% opacity (#5B6A5E33)", () => {
+    const theme = buildTheme(DuskGroveDark);
+    const subtleBorderKeys = [
+      "titleBar.border",
+      "sideBar.border",
+      "sideBarSectionHeader.border",
+      "activityBar.border",
+      "editorGroup.border",
+      "panel.border",
+      "panelSection.border",
+      "panelSectionHeader.border",
+      "statusBar.border",
+    ];
+
+    for (const key of subtleBorderKeys) {
+      expect(theme.colors[key], `Key ${key} must match subtleBorder #5B6A5E33`).toBe("#5B6A5E33");
+    }
+  });
+
+  it("maintains transparent borders for tabs and sidebar title", () => {
+    const theme = buildTheme(DuskGroveDark);
+    const transparentBorderKeys = [
+      "sideBarTitle.border",
+      "tab.border",
+      "editorGroupHeader.tabsBorder",
+      "editorGroupHeader.border",
+    ];
+
+    for (const key of transparentBorderKeys) {
+      expect(theme.colors[key], `Key ${key} must be fully transparent`).toBe("#00000000");
     }
   });
 
@@ -132,6 +223,7 @@ describe("buildTheme compiler", () => {
         border: "#282c34",
         fgMuted: "#5c6370",
         fgPrimary: "#abb2bf",
+        accentHighlight: "#ebcb8b",
       },
       syntax: {
         keyword: "#c678dd",

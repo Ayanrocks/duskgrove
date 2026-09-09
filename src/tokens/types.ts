@@ -34,6 +34,8 @@ export interface UiTokens {
   fgMuted: string;
   /** Primary text, active tab labels, and prominent UI elements */
   fgPrimary: string;
+  /** Dedicated highlight and accent color for UI chrome, indicators, borders, and cursor */
+  accentHighlight: string;
 }
 
 /**

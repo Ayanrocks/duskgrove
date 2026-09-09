@@ -74,6 +74,11 @@ export function calculateContrastRatio(foregroundHex: string, backgroundHex: str
  * Requirements:
  * - `fgPrimary` vs `bgEditor` >= 4.5:1 (WCAG AA normal text)
  * - `fgMuted` vs `bgEditor` >= 3.0:1 (WCAG AA large text / UI elements)
+ * - `accentHighlight` vs `bgEditor` >= 3.0:1 (WCAG AA non-text UI chrome)
+ * - `accentHighlight` vs `bgSidebar` >= 3.0:1 (WCAG AA non-text UI chrome)
+ * - `panelTitle.activeForeground` vs `panel.background` (bgEditor) >= 3.0:1
+ * - `panelTitle.inactiveForeground` vs `panel.background` (bgEditor) >= 3.0:1
+ * - `panelTitle.activeBorder` vs `panel.background` (bgEditor) >= 3.0:1
  * - `semantic.error` vs `bgEditor` >= 3.0:1
  * - `semantic.warning` vs `bgEditor` >= 3.0:1
  * - `semantic.info` vs `bgEditor` >= 3.0:1
@@ -99,6 +104,46 @@ export function validateVariantContrast(tokens: ColorTokenSet): ContrastReport {
       foreground: tokens.ui.fgMuted,
       background: bg,
       ratio: calculateContrastRatio(tokens.ui.fgMuted, bg),
+      requiredRatio: 3.0,
+      passed: false,
+    },
+    {
+      name: "accentHighlight vs bgEditor",
+      foreground: tokens.ui.accentHighlight,
+      background: bg,
+      ratio: calculateContrastRatio(tokens.ui.accentHighlight, bg),
+      requiredRatio: 3.0,
+      passed: false,
+    },
+    {
+      name: "accentHighlight vs bgSidebar",
+      foreground: tokens.ui.accentHighlight,
+      background: tokens.ui.bgSidebar,
+      ratio: calculateContrastRatio(tokens.ui.accentHighlight, tokens.ui.bgSidebar),
+      requiredRatio: 3.0,
+      passed: false,
+    },
+    {
+      name: "panelTitle.activeForeground vs panel.background",
+      foreground: tokens.ui.fgPrimary,
+      background: bg,
+      ratio: calculateContrastRatio(tokens.ui.fgPrimary, bg),
+      requiredRatio: 3.0,
+      passed: false,
+    },
+    {
+      name: "panelTitle.inactiveForeground vs panel.background",
+      foreground: tokens.ui.fgMuted,
+      background: bg,
+      ratio: calculateContrastRatio(tokens.ui.fgMuted, bg),
+      requiredRatio: 3.0,
+      passed: false,
+    },
+    {
+      name: "panelTitle.activeBorder vs panel.background",
+      foreground: tokens.ui.accentHighlight,
+      background: bg,
+      ratio: calculateContrastRatio(tokens.ui.accentHighlight, bg),
       requiredRatio: 3.0,
       passed: false,
     },

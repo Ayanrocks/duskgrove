@@ -21,6 +21,7 @@ export const DuskGroveDark: ColorTokenSet = {
     border: "#757083",
     fgMuted: "#8A95A5",
     fgPrimary: "#B9C6AE",
+    accentHighlight: "#BE9E5F",
   },
   // Design rationale: Two hue families carry structural accents — warm orange (`keyword`, `tag`, `attribute`)
   // for declarative/structural constructs, and sage/teal (`function`, `typeClass`, `numberConstant`)

@@ -37,11 +37,13 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
 
   const scrollbarBg = withAlpha(ui.bgSelection, 0.3);
   const scrollbarHover = withAlpha(ui.bgSelection, 0.5);
-  const scrollbarActive = withAlpha(ui.bgSelection, 0.7);
+
+  const subtleBorder = withAlpha(tokens.syntax.comment, 0.2);
 
   return {
     // Base & Focus
-    focusBorder: ui.border,
+    focusBorder: ui.accentHighlight,
+    "sash.hoverBorder": ui.accentHighlight,
     foreground: ui.fgPrimary,
     "selection.background": selectionAlpha,
     "widget.shadow": withAlpha("#000000", 0.5),
@@ -51,29 +53,30 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
     "titleBar.activeForeground": ui.fgPrimary,
     "titleBar.inactiveBackground": ui.bgSidebar,
     "titleBar.inactiveForeground": ui.fgMuted,
-    "titleBar.border": ui.border,
+    "titleBar.border": subtleBorder,
 
     // Activity Bar
     "activityBar.background": darken(ui.bgSidebar, 3),
     "activityBar.foreground": ui.fgPrimary,
     "activityBar.inactiveForeground": ui.fgMuted,
-    "activityBar.border": ui.border,
-    "activityBarBadge.background": tokens.syntax.function,
+    "activityBar.border": subtleBorder,
+    "activityBarBadge.background": ui.accentHighlight,
     "activityBarBadge.foreground": ui.bgEditor,
 
     // Side Bar
     "sideBar.background": ui.bgSidebar,
     "sideBar.foreground": ui.fgPrimary,
-    "sideBar.border": ui.border,
+    "sideBar.border": subtleBorder,
     "sideBarTitle.foreground": ui.fgPrimary,
+    "sideBarTitle.border": "#00000000",
     "sideBarSectionHeader.background": ui.bgSidebar,
     "sideBarSectionHeader.foreground": ui.fgMuted,
-    "sideBarSectionHeader.border": ui.border,
+    "sideBarSectionHeader.border": subtleBorder,
 
     // Editor Canvas
     "editor.background": ui.bgEditor,
     "editor.foreground": ui.fgPrimary,
-    "editorCursor.foreground": ui.fgPrimary,
+    "editorCursor.foreground": ui.accentHighlight,
     "editorLineNumber.foreground": ui.fgMuted,
     "editorLineNumber.activeForeground": ui.fgPrimary,
     "editor.lineHighlightBackground": editorLineHighlight,
@@ -89,33 +92,39 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
     "editorIndentGuide.activeBackground1": indentGuideActive,
     "editorRuler.foreground": withAlpha(ui.border, 0.4),
     "editorBracketMatch.background": withAlpha(ui.bgSelection, 0.5),
-    "editorBracketMatch.border": ui.border,
+    "editorBracketMatch.border": ui.accentHighlight,
 
     // Tabs & Editor Groups
     "editorGroupHeader.tabsBackground": ui.bgSidebar,
-    "editorGroupHeader.tabsBorder": ui.border,
-    "editorGroup.border": ui.border,
+    "editorGroupHeader.tabsBorder": "#00000000",
+    "editorGroupHeader.border": "#00000000",
+    "editorGroup.border": subtleBorder,
     "tab.activeBackground": ui.bgEditor,
     "tab.activeForeground": ui.fgPrimary,
-    "tab.activeBorder": tokens.syntax.function,
+    "tab.activeBorderTop": ui.accentHighlight,
+    "tab.unfocusedActiveBorderTop": withAlpha(ui.accentHighlight, 0.5),
     "tab.inactiveBackground": ui.bgSidebar,
     "tab.inactiveForeground": ui.fgMuted,
-    "tab.border": ui.border,
+    "tab.border": "#00000000",
     "tab.hoverBackground": lighten(ui.bgSidebar, 4),
     "tab.unfocusedActiveBackground": ui.bgEditor,
     "tab.unfocusedActiveForeground": ui.fgMuted,
 
     // Bottom Panel & Output
-    "panel.background": ui.bgPanel,
-    "panel.border": ui.border,
-    "panelTitle.activeBorder": tokens.syntax.function,
+    "panel.background": ui.bgEditor,
+    "panel.border": subtleBorder,
+    "panelTitle.activeBorder": ui.accentHighlight,
     "panelTitle.activeForeground": ui.fgPrimary,
     "panelTitle.inactiveForeground": ui.fgMuted,
+    "panelSection.border": subtleBorder,
+    "panelSectionHeader.background": ui.bgEditor,
+    "panelSectionHeader.foreground": ui.fgMuted,
+    "panelSectionHeader.border": subtleBorder,
 
     // Status Bar
     "statusBar.background": darken(ui.bgSidebar, 5),
     "statusBar.foreground": ui.fgPrimary,
-    "statusBar.border": ui.border,
+    "statusBar.border": subtleBorder,
     "statusBar.debuggingBackground": tokens.syntax.numberConstant,
     "statusBar.debuggingForeground": ui.bgEditor,
     "statusBar.noFolderBackground": darken(ui.bgSidebar, 5),
@@ -157,7 +166,8 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
     // Scrollbar & Breadcrumbs
     "scrollbarSlider.background": scrollbarBg,
     "scrollbarSlider.hoverBackground": scrollbarHover,
-    "scrollbarSlider.activeBackground": scrollbarActive,
+    "scrollbarSlider.activeBackground": ui.accentHighlight,
+    "minimapSlider.activeBackground": ui.accentHighlight,
     "breadcrumb.background": ui.bgEditor,
     "breadcrumb.foreground": ui.fgMuted,
     "breadcrumb.focusForeground": ui.fgPrimary,

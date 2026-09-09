@@ -30,6 +30,7 @@
 | **Primary Foreground**     | Lichen Canopy              | `#B9C6AE` | ![#B9C6AE](https://via.placeholder.com/15/B9C6AE/000000?text=+) |
 | **Muted Foreground**       | Cool Mist Slate            | `#8A95A5` | ![#8A95A5](https://via.placeholder.com/15/8A95A5/000000?text=+) |
 | **Border & Dividers**      | Twilight Slate             | `#757083` | ![#757083](https://via.placeholder.com/15/757083/000000?text=+) |
+| **Accent Highlight**       | Warm Amber Gold            | `#BE9E5F` | ![#BE9E5F](https://via.placeholder.com/15/BE9E5F/000000?text=+) |
 | **Keywords**               | Heather Lavender           | `#A68FD1` | ![#A68FD1](https://via.placeholder.com/15/A68FD1/000000?text=+) |
 | **Strings**                | Sprout Green               | `#A3C98F` | ![#A3C98F](https://via.placeholder.com/15/A3C98F/000000?text=+) |
 | **Numbers & Constants**    | Amber Honey                | `#D9B97A` | ![#D9B97A](https://via.placeholder.com/15/D9B97A/000000?text=+) |
@@ -104,6 +105,7 @@ export const DuskGroveLight: ColorTokenSet = {
     border: "#B2BDB0",
     fgMuted: "#6B7568",
     fgPrimary: "#232A20",
+    accentHighlight: "#C78C26",
   },
   syntax: {
     keyword: "#6D4C9F",
