@@ -145,7 +145,13 @@
   "tokenColors": [
     {
       "name": "Comments and comment punctuation",
-      "scope": ["comment", "comment.line", "comment.block", "punctuation.definition.comment"],
+      "scope": [
+        "comment",
+        "comment.line",
+        "comment.block",
+        "comment.block.documentation",
+        "punctuation.definition.comment"
+      ],
       "settings": {
         "foreground": "#5B6A5E",
         "fontStyle": "italic"

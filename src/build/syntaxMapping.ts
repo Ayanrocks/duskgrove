@@ -31,7 +31,13 @@ export function generateSyntaxColors(tokens: ColorTokenSet): TextMateTokenRule[]
     // Comments: strictly italicized for visual distinction
     {
       name: "Comments and comment punctuation",
-      scope: ["comment", "comment.line", "comment.block", "punctuation.definition.comment"],
+      scope: [
+        "comment",
+        "comment.line",
+        "comment.block",
+        "comment.block.documentation",
+        "punctuation.definition.comment",
+      ],
       settings: {
         foreground: syntax.comment,
         fontStyle: "italic",

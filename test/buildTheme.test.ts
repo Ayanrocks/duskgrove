@@ -146,13 +146,25 @@ describe("buildTheme compiler", () => {
   it("correctly handles font styles: italic for comments, non-italic for keywords", () => {
     const theme = buildTheme(DuskGroveDark);
 
-    // Comments must have fontStyle: "italic"
+    // Comments must have fontStyle: "italic" across all standard scopes
     const commentRule = theme.tokenColors.find((rule) => {
       const scopes = Array.isArray(rule.scope) ? rule.scope : [rule.scope];
       return scopes.includes("comment");
     });
     expect(commentRule).toBeDefined();
     expect(commentRule?.settings.fontStyle).toBe("italic");
+
+    const scopes = Array.isArray(commentRule?.scope) ? commentRule.scope : [commentRule?.scope];
+    expect(scopes).toContain("comment");
+    expect(scopes).toContain("comment.line");
+    expect(scopes).toContain("comment.block");
+    expect(scopes).toContain("comment.block.documentation");
+
+    // Semantic tokens must also enforce italic for comments
+    expect(theme.semanticTokenColors.comment).toEqual({
+      foreground: DuskGroveDark.syntax.comment,
+      fontStyle: "italic",
+    });
 
     // Keywords must NOT have italic fontStyle
     const keywordRule = theme.tokenColors.find((rule) => {

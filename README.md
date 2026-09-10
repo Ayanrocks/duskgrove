@@ -48,6 +48,76 @@
 
 ---
 
+## Optional: Italic Keywords, Types & Attributes
+
+By default, DuskGrove strictly reserves `fontStyle: "italic"` for comments to maximize visual calm and avoid reading fatigue across primary code constructs. Rather than duplicating theme variants for cosmetic font styles, VS Code provides a native customization mechanism via `editor.tokenColorCustomizations`.
+
+This is an optional, recommended addition to your personal `settings.json` if you prefer cursive/italic styling for declaration keywords, type definitions, and attributes.
+
+### Recommended `settings.json` Snippet
+
+Add the following to your user `settings.json` (`Cmd/Ctrl + Shift + P` -> `Preferences: Open User Settings (JSON)`):
+
+```json
+"editor.tokenColorCustomizations": {
+  "textMateRules": [
+    {
+      "scope": [
+        "storage",
+        "storage.type",
+        "storage.modifier",
+        "keyword.other.import",
+        "keyword.other.package"
+      ],
+      "settings": { "fontStyle": "italic" }
+    },
+    {
+      "scope": [
+        "entity.name.type",
+        "entity.name.type.class",
+        "support.type"
+      ],
+      "settings": { "fontStyle": "italic" }
+    },
+    {
+      "scope": "entity.other.attribute-name",
+      "settings": { "fontStyle": "italic" }
+    }
+  ]
+}
+```
+
+### Design Rationale: Scopes Included & Excluded
+
+- **Included (Declaration & Structural Meta)**:
+  - **Declaration & Meta Keywords**: `storage`, `storage.type`, `storage.modifier`, `keyword.other.import`, `keyword.other.package`.
+  - **Types & Classes**: `entity.name.type`, `entity.name.type.class`, `support.type` (covers `typeClass`).
+  - **Attributes**: `entity.other.attribute-name` (covers `attribute`).
+- **Excluded (Control Flow & High-Frequency Constructs)**:
+  - **Control-flow keywords** (`if`, `for`, `return`, `switch`): Deliberately kept upright. These represent logic to scan quickly, not meta-statements.
+  - **Strings**: Excluded because italic glyphs thin the stroke width, working against the extra lightness required for long strings to remain legible at length.
+  - **Variables, Functions, Operators, and Tags**: Excluded as the highest-frequency tokens. Sustained italics across these tokens adds visual noise and reading fatigue with no legibility payoff.
+
+### Font Rendering & Cursive Comments
+
+VS Code's TextMate rules only support `fontStyle: "italic" | "bold" | "underline" | "strikethrough"` — there is no `"cursive"` value. Applying `italic` in VS Code renders whatever italic glyph design is built into the active typeface. In fonts such as **JetBrains Mono** or **Cascadia Code**, the italic design is a clean synthetic slant rather than cursive letterforms.
+
+Because `editor.fontFamily` is a global editor setting, font families cannot be scoped per-token (comments cannot use a separate typeface from the rest of the editor). To achieve true cursive comments on top of DuskGrove's locked `fontStyle: "italic"`, pair the theme with a monospace typeface whose italic weight is drawn with true cursive/script letterforms.
+
+**Victor Mono** (free, open source) is the standout choice — it provides dedicated cursive italic letterforms designed specifically for code comments and keywords.
+
+#### Recommended Font Settings (Victor Mono)
+
+```json
+"editor.fontFamily": "Victor Mono",
+"editor.fontLigatures": true,
+"editor.fontWeight": "500"
+```
+
+With Victor Mono selected, DuskGrove's locked italic comments render in genuine cursive script; with standard fonts (such as JetBrains Mono or Cascadia Code), they fall back cleanly to slanted roman.
+
+---
+
 ## Architecture & Scalability
 
 DuskGrove is structured so that **color values exist in exactly one place**: `src/tokens/`.
