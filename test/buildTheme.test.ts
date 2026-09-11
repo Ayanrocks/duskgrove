@@ -3,7 +3,13 @@
  * @description Unit tests for theme compiler and token completeness.
  */
 import { describe, it, expect } from "vitest";
-import { DuskGroveDark, DuskGroveDarkSeamless, tokenVariants } from "../src/tokens/index.js";
+import {
+  DuskGroveDark,
+  DuskGroveDarkSeamless,
+  DuskGroveOcean,
+  DuskGroveOceanSeamless,
+  tokenVariants,
+} from "../src/tokens/index.js";
 import { buildTheme } from "../src/build/buildTheme.js";
 import { ColorTokenSet } from "../src/tokens/types.js";
 
@@ -301,5 +307,132 @@ describe("buildTheme compiler", () => {
     expect(DuskGroveDarkSeamless.ui.bgSidebar).toBe("#121810");
     expect(DuskGroveDarkSeamless.ui.bgSidebar).toBe(DuskGroveDarkSeamless.ui.bgEditor);
     expect(DuskGroveDark.ui.bgSidebar).toBe("#1A2116");
+  });
+
+  it("compiles DuskGroveOcean and matches all 26 ground-truth keys", () => {
+    const theme = buildTheme(DuskGroveOcean);
+
+    expect(theme.name).toBe("DuskGrove - Ocean");
+    expect(theme.type).toBe("dark");
+
+    const expectedOceanKeys: Record<string, string> = {
+      "titleBar.activeBackground": "#161B21",
+      "titleBar.inactiveBackground": "#161B21",
+      "activityBar.background": "#101318",
+      "activityBarBadge.foreground": "#101318",
+      "sideBar.background": "#161B21",
+      "sideBarSectionHeader.background": "#161B21",
+      "editor.background": "#101318",
+      "editorGroupHeader.tabsBackground": "#161B21",
+      "tab.activeBackground": "#101318",
+      "tab.inactiveBackground": "#161B21",
+      "tab.hoverBackground": "#1F252E",
+      "tab.unfocusedActiveBackground": "#101318",
+      "panel.background": "#101318",
+      "panelSectionHeader.background": "#101318",
+      "statusBar.background": "#0C0F12",
+      "statusBar.debuggingForeground": "#101318",
+      "statusBar.noFolderBackground": "#0C0F12",
+      "statusBarItem.remoteForeground": "#101318",
+      "input.background": "#0C0F12",
+      "dropdown.background": "#0C0F12",
+      "button.secondaryBackground": "#161B21",
+      "badge.foreground": "#101318",
+      "breadcrumb.background": "#101318",
+      "notifications.background": "#161B21",
+      "terminal.background": "#101318",
+      "terminal.ansiBlack": "#101318",
+    };
+
+    for (const [key, value] of Object.entries(expectedOceanKeys)) {
+      expect(theme.colors[key], `Ocean Normal key ${key} mismatch`).toBe(value);
+    }
+  });
+
+  it("compiles DuskGroveOceanSeamless and matches all 26 ground-truth keys", () => {
+    const theme = buildTheme(DuskGroveOceanSeamless);
+
+    expect(theme.name).toBe("DuskGrove - Ocean (Seamless)");
+    expect(theme.type).toBe("dark");
+
+    const expectedSeamlessKeys: Record<string, string> = {
+      "titleBar.activeBackground": "#101318",
+      "titleBar.inactiveBackground": "#101318",
+      "activityBar.background": "#101318",
+      "activityBarBadge.foreground": "#101318",
+      "sideBar.background": "#101318",
+      "sideBarSectionHeader.background": "#101318",
+      "editor.background": "#101318",
+      "editorGroupHeader.tabsBackground": "#101318",
+      "tab.activeBackground": "#101318",
+      "tab.inactiveBackground": "#101318",
+      "tab.hoverBackground": "#1F252E",
+      "tab.unfocusedActiveBackground": "#101318",
+      "panel.background": "#101318",
+      "panelSectionHeader.background": "#101318",
+      "statusBar.background": "#0C0F12",
+      "statusBar.debuggingForeground": "#101318",
+      "statusBar.noFolderBackground": "#0C0F12",
+      "statusBarItem.remoteForeground": "#101318",
+      "input.background": "#0C0F12",
+      "dropdown.background": "#0C0F12",
+      "button.secondaryBackground": "#101318",
+      "badge.foreground": "#101318",
+      "breadcrumb.background": "#101318",
+      "notifications.background": "#101318",
+      "terminal.background": "#101318",
+      "terminal.ansiBlack": "#101318",
+    };
+
+    for (const [key, value] of Object.entries(expectedSeamlessKeys)) {
+      expect(theme.colors[key], `Ocean Seamless key ${key} mismatch`).toBe(value);
+    }
+  });
+
+  it("diffing DuskGroveOcean against DuskGroveDark shows exactly the 26 keys", () => {
+    const forestTheme = buildTheme(DuskGroveDark);
+    const oceanTheme = buildTheme(DuskGroveOcean);
+
+    const diffKeys: string[] = [];
+    const allKeys = new Set([
+      ...Object.keys(forestTheme.colors),
+      ...Object.keys(oceanTheme.colors),
+    ]);
+    for (const key of allKeys) {
+      if (forestTheme.colors[key] !== oceanTheme.colors[key]) {
+        diffKeys.push(key);
+      }
+    }
+
+    expect(diffKeys.length).toBe(26);
+  });
+
+  it("diffing DuskGroveOceanSeamless against DuskGroveOcean shows exactly the 8 keys", () => {
+    const oceanTheme = buildTheme(DuskGroveOcean);
+    const seamlessTheme = buildTheme(DuskGroveOceanSeamless);
+
+    const diffKeys: string[] = [];
+    const allKeys = new Set([
+      ...Object.keys(oceanTheme.colors),
+      ...Object.keys(seamlessTheme.colors),
+    ]);
+    for (const key of allKeys) {
+      if (oceanTheme.colors[key] !== seamlessTheme.colors[key]) {
+        diffKeys.push(key);
+      }
+    }
+
+    const expected8Keys = [
+      "titleBar.activeBackground",
+      "titleBar.inactiveBackground",
+      "sideBar.background",
+      "sideBarSectionHeader.background",
+      "editorGroupHeader.tabsBackground",
+      "tab.inactiveBackground",
+      "button.secondaryBackground",
+      "notifications.background",
+    ].sort();
+
+    expect(diffKeys.sort()).toEqual(expected8Keys);
   });
 });

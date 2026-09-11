@@ -48,6 +48,16 @@
         "label": "DuskGrove - Forest (Seamless)",
         "uiTheme": "vs-dark",
         "path": "./themes/DuskGrove-dark-seamless-color-theme.json"
+      },
+      {
+        "label": "DuskGrove - Ocean",
+        "uiTheme": "vs-dark",
+        "path": "./themes/DuskGrove-ocean-color-theme.json"
+      },
+      {
+        "label": "DuskGrove - Ocean (Seamless)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/DuskGrove-ocean-seamless-color-theme.json"
       }
     ]
   },

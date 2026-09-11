@@ -23,12 +23,25 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
   const findMatchAlpha = withAlpha(tokens.syntax.numberConstant, 0.4);
   const findMatchHighlightAlpha = withAlpha(tokens.syntax.numberConstant, 0.2);
 
+  const isOcean = tokens.meta.id.toLowerCase().includes("ocean");
+  const isForestSeamless = tokens.meta.id === "DuskGrove-dark-seamless";
+
   const buttonBg = lighten(ui.bgSelection, 10);
   const buttonHover = lighten(ui.bgSelection, 18);
   const secondaryButtonBg = ui.bgSidebar;
-  const secondaryButtonHover = lighten(ui.bgSidebar, 6);
+  const secondaryButtonHover = isOcean ? "#293423" : lighten(ui.bgSidebar, 6);
 
-  const inputBg = darken(ui.bgEditor, 2);
+  // Darkest recessed tier: status bar, inputs, dropdowns (#0C0F12 for Ocean, #0E120C for Forest)
+  const darkestBg = isOcean ? "#0C0F12" : darken(ui.bgEditor, 2);
+  const statusBarBg = isOcean ? "#0C0F12" : darken(ui.bgSidebar, 5);
+  const inputBg = darkestBg;
+
+  // Base tier: activity bar folds into bgEditor for Ocean (#101318)
+  const activityBarBg = isOcean ? ui.bgEditor : darken(ui.bgSidebar, 3);
+
+  // Hover tier: tab hover (#1F252E for Ocean)
+  const tabHoverBg = isOcean ? "#1F252E" : lighten(ui.bgSidebar, 4);
+
   const listHover = withAlpha(ui.bgSelection, 0.3);
   const listActive = withAlpha(ui.bgSelection, 0.7);
 
@@ -39,9 +52,6 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
   const scrollbarHover = withAlpha(ui.bgSelection, 0.5);
 
   const subtleBorder = withAlpha(tokens.syntax.comment, 0.2);
-  const isSeamless = Boolean(
-    tokens.meta.seamless || tokens.meta.id.toLowerCase().includes("seamless"),
-  );
 
   return {
     // Base & Focus
@@ -59,7 +69,7 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
     "titleBar.border": subtleBorder,
 
     // Activity Bar
-    "activityBar.background": darken(ui.bgSidebar, 3),
+    "activityBar.background": activityBarBg,
     "activityBar.foreground": ui.fgPrimary,
     "activityBar.inactiveForeground": ui.fgMuted,
     "activityBar.border": subtleBorder,
@@ -69,7 +79,7 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
     // Side Bar
     "sideBar.background": ui.bgSidebar,
     "sideBar.foreground": ui.fgPrimary,
-    "sideBar.border": isSeamless ? "#00000000" : subtleBorder,
+    "sideBar.border": isForestSeamless ? "#00000000" : subtleBorder,
     "sideBarTitle.foreground": ui.fgPrimary,
     "sideBarTitle.border": "#00000000",
     "sideBarSectionHeader.background": ui.bgSidebar,
@@ -109,7 +119,7 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
     "tab.inactiveBackground": ui.bgSidebar,
     "tab.inactiveForeground": ui.fgMuted,
     "tab.border": "#00000000",
-    "tab.hoverBackground": lighten(ui.bgSidebar, 4),
+    "tab.hoverBackground": tabHoverBg,
     "tab.unfocusedActiveBackground": ui.bgEditor,
     "tab.unfocusedActiveForeground": ui.fgMuted,
 
@@ -125,12 +135,12 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
     "panelSectionHeader.border": subtleBorder,
 
     // Status Bar
-    "statusBar.background": darken(ui.bgSidebar, 5),
+    "statusBar.background": statusBarBg,
     "statusBar.foreground": ui.fgPrimary,
     "statusBar.border": subtleBorder,
     "statusBar.debuggingBackground": tokens.syntax.numberConstant,
     "statusBar.debuggingForeground": ui.bgEditor,
-    "statusBar.noFolderBackground": darken(ui.bgSidebar, 5),
+    "statusBar.noFolderBackground": statusBarBg,
     "statusBarItem.hoverBackground": withAlpha(ui.fgPrimary, 0.15),
     "statusBarItem.remoteBackground": tokens.syntax.typeClass,
     "statusBarItem.remoteForeground": ui.bgEditor,
