@@ -14,6 +14,8 @@ export interface ThemeMeta {
   label: string;
   /** VS Code base theme type classification */
   type: "dark" | "light" | "hc-dark" | "hc-light";
+  /** Optional flag indicating if the variant has a seamless sidebar/editor surface */
+  seamless?: boolean;
 }
 
 /**

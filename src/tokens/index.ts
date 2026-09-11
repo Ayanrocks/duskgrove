@@ -6,11 +6,13 @@
 
 import { ColorTokenSet } from "./types.js";
 import { DuskGroveDark } from "./DuskGrove-dark.js";
+import { DuskGroveDarkSeamless } from "./DuskGrove-dark-seamless.js";
 
 export * from "./types.js";
 export * from "./DuskGrove-dark.js";
+export * from "./DuskGrove-dark-seamless.js";
 
 /**
  * Registry of all DuskGrove color variants.
  */
-export const tokenVariants: ColorTokenSet[] = [DuskGroveDark];
+export const tokenVariants: ColorTokenSet[] = [DuskGroveDark, DuskGroveDarkSeamless];

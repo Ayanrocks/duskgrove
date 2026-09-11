@@ -39,6 +39,9 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
   const scrollbarHover = withAlpha(ui.bgSelection, 0.5);
 
   const subtleBorder = withAlpha(tokens.syntax.comment, 0.2);
+  const isSeamless = Boolean(
+    tokens.meta.seamless || tokens.meta.id.toLowerCase().includes("seamless"),
+  );
 
   return {
     // Base & Focus
@@ -66,7 +69,7 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
     // Side Bar
     "sideBar.background": ui.bgSidebar,
     "sideBar.foreground": ui.fgPrimary,
-    "sideBar.border": subtleBorder,
+    "sideBar.border": isSeamless ? "#00000000" : subtleBorder,
     "sideBarTitle.foreground": ui.fgPrimary,
     "sideBarTitle.border": "#00000000",
     "sideBarSectionHeader.background": ui.bgSidebar,

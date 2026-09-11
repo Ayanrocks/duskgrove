@@ -6,7 +6,7 @@
 import { describe, it, expect } from "vitest";
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { DuskGroveDark } from "../src/tokens/index.js";
+import { DuskGroveDark, DuskGroveDarkSeamless } from "../src/tokens/index.js";
 import { buildTheme } from "../src/build/buildTheme.js";
 import { validateTheme, vsCodeThemeSchema } from "../src/validate/schema.js";
 
@@ -16,7 +16,16 @@ describe("Theme schema validation", () => {
     expect(() => validateTheme(theme)).not.toThrow();
 
     const validated = validateTheme(theme);
-    expect(validated.name).toBe("DuskGrove");
+    expect(validated.name).toBe("DuskGrove - Forest");
+    expect(validated.type).toBe("dark");
+  });
+
+  it("successfully validates the compiled DuskGroveDarkSeamless theme", () => {
+    const theme = buildTheme(DuskGroveDarkSeamless);
+    expect(() => validateTheme(theme)).not.toThrow();
+
+    const validated = validateTheme(theme);
+    expect(validated.name).toBe("DuskGrove - Forest (Seamless)");
     expect(validated.type).toBe("dark");
   });
 
@@ -60,17 +69,24 @@ describe("Theme schema validation", () => {
     expect(() => validateTheme(invalidTheme)).toThrow();
   });
 
-  it("validates any generated theme JSON file on disk", () => {
-    const themePath = path.resolve(__dirname, "../themes/DuskGrove-dark-color-theme.json");
+  it("validates all generated theme JSON files on disk", () => {
+    const themeFilenames = [
+      "DuskGrove-dark-color-theme.json",
+      "DuskGrove-dark-seamless-color-theme.json",
+    ];
 
-    if (fs.existsSync(themePath)) {
-      const rawContent = fs.readFileSync(themePath, "utf-8");
-      const parsed = JSON.parse(rawContent);
+    for (const filename of themeFilenames) {
+      const themePath = path.resolve(__dirname, `../themes/${filename}`);
+      if (fs.existsSync(themePath)) {
+        const rawContent = fs.readFileSync(themePath, "utf-8");
+        const parsed = JSON.parse(rawContent);
 
-      const result = vsCodeThemeSchema.safeParse(parsed);
-      expect(result.success, `Schema validation failed on disk artifact: ${result.error}`).toBe(
-        true,
-      );
+        const result = vsCodeThemeSchema.safeParse(parsed);
+        expect(
+          result.success,
+          `Schema validation failed on disk artifact ${filename}: ${result.error}`,
+        ).toBe(true);
+      }
     }
   });
 });

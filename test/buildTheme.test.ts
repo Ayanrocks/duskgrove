@@ -3,7 +3,7 @@
  * @description Unit tests for theme compiler and token completeness.
  */
 import { describe, it, expect } from "vitest";
-import { DuskGroveDark, tokenVariants } from "../src/tokens/index.js";
+import { DuskGroveDark, DuskGroveDarkSeamless, tokenVariants } from "../src/tokens/index.js";
 import { buildTheme } from "../src/build/buildTheme.js";
 import { ColorTokenSet } from "../src/tokens/types.js";
 
@@ -11,7 +11,7 @@ describe("buildTheme compiler", () => {
   it("compiles DuskGroveDark into a valid theme structure", () => {
     const theme = buildTheme(DuskGroveDark);
 
-    expect(theme.name).toBe("DuskGrove");
+    expect(theme.name).toBe("DuskGrove - Forest");
     expect(theme.type).toBe("dark");
     expect(theme.semanticHighlighting).toBe(true);
     expect(typeof theme.colors).toBe("object");
@@ -261,5 +261,45 @@ describe("buildTheme compiler", () => {
     expect(compiled.name).toBe("Custom Nordic");
     expect(compiled.colors["editor.background"]).toBe("#1e222a");
     expect(compiled.colors["editor.foreground"]).toBe("#abb2bf");
+  });
+
+  it("compiles DuskGroveDarkSeamless into a valid theme structure with seamless border neutralization", () => {
+    const theme = buildTheme(DuskGroveDarkSeamless);
+
+    expect(theme.name).toBe("DuskGrove - Forest (Seamless)");
+    expect(theme.type).toBe("dark");
+    expect(theme.semanticHighlighting).toBe(true);
+
+    // Unbroken color canvas: editor and sidebar backgrounds match exactly
+    expect(theme.colors["editor.background"]).toBe("#121810");
+    expect(theme.colors["sideBar.background"]).toBe("#121810");
+    expect(theme.colors["editorGroupHeader.tabsBackground"]).toBe("#121810");
+    expect(theme.colors["tab.activeBackground"]).toBe("#121810");
+    expect(theme.colors["tab.inactiveBackground"]).toBe("#121810");
+
+    // Seam between sidebar and editor is neutralized to transparent
+    expect(theme.colors["sideBar.border"]).toBe("#00000000");
+
+    // Generic borders for UI chrome remain intact and untouched
+    expect(theme.colors["input.border"]).toBe(DuskGroveDarkSeamless.ui.border);
+    expect(theme.colors["dropdown.border"]).toBe(DuskGroveDarkSeamless.ui.border);
+    expect(theme.colors["notifications.border"]).toBe(DuskGroveDarkSeamless.ui.border);
+    expect(DuskGroveDarkSeamless.ui.border).toBe("#757083");
+  });
+
+  it("preserves resting container borders for DuskGroveDark while neutralizing only DuskGroveDarkSeamless", () => {
+    const defaultTheme = buildTheme(DuskGroveDark);
+    const seamlessTheme = buildTheme(DuskGroveDarkSeamless);
+
+    expect(defaultTheme.colors["sideBar.border"]).toBe("#5B6A5E33");
+    expect(seamlessTheme.colors["sideBar.border"]).toBe("#00000000");
+  });
+
+  it("ensures DuskGroveDarkSeamless syntax and semantic tokens match DuskGroveDark verbatim", () => {
+    expect(DuskGroveDarkSeamless.syntax).toEqual(DuskGroveDark.syntax);
+    expect(DuskGroveDarkSeamless.semantic).toEqual(DuskGroveDark.semantic);
+    expect(DuskGroveDarkSeamless.ui.bgSidebar).toBe("#121810");
+    expect(DuskGroveDarkSeamless.ui.bgSidebar).toBe(DuskGroveDarkSeamless.ui.bgEditor);
+    expect(DuskGroveDark.ui.bgSidebar).toBe("#1A2116");
   });
 });

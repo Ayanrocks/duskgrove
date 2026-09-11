@@ -1,21 +1,22 @@
 /**
- * @file DuskGrove-dark.ts
- * @description Default dark variant for DuskGrove.
- * Inspired by twilight woodland canopies: deep mossy forest shadows (#121810),
- * pine bark (#1A2116), dusky heather (#474056), and sage canopy highlights (#B9C6AE).
+ * @file DuskGrove-dark-seamless.ts
+ * @description Seamless dark variant for DuskGrove.
+ * Blends editor and sidebar into an unbroken twilight woodland canopy field (#121810),
+ * paired with dusky heather (#474056) and sage canopy highlights (#B9C6AE).
  */
 
 import { ColorTokenSet } from "./types.js";
 
-export const DuskGroveDark: ColorTokenSet = {
+export const DuskGroveDarkSeamless: ColorTokenSet = {
   meta: {
-    id: "DuskGrove-dark",
-    label: "DuskGrove - Forest",
+    id: "DuskGrove-dark-seamless",
+    label: "DuskGrove - Forest (Seamless)",
     type: "dark",
+    seamless: true,
   },
   ui: {
     bgEditor: "#121810",
-    bgSidebar: "#1A2116",
+    bgSidebar: "#121810",
     bgSelection: "#474056",
     bgPanel: "#474056",
     border: "#757083",

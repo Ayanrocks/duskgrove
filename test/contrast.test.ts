@@ -9,7 +9,7 @@ import {
   calculateLuminance,
   validateVariantContrast,
 } from "../src/validate/contrast.js";
-import { DuskGroveDark, tokenVariants } from "../src/tokens/index.js";
+import { DuskGroveDark, DuskGroveDarkSeamless, tokenVariants } from "../src/tokens/index.js";
 import { ColorTokenSet } from "../src/tokens/types.js";
 import { buildTheme } from "../src/build/buildTheme.js";
 
@@ -184,6 +184,21 @@ describe("WCAG relative luminance and contrast engine", () => {
         `Variant ${variant.meta.id} failed contrast checks: ${JSON.stringify(report.checks.filter((c) => !c.passed))}`,
       ).toBe(true);
     }
+  });
+
+  it("ensures DuskGroveDarkSeamless satisfies all WCAG contrast thresholds with unified background", () => {
+    const report = validateVariantContrast(DuskGroveDarkSeamless);
+    expect(report.passed).toBe(true);
+
+    const fgPrimaryCheck = report.checks.find((c) => c.name === "fgPrimary vs bgEditor");
+    expect(fgPrimaryCheck?.passed).toBe(true);
+    expect(fgPrimaryCheck?.ratio).toBeGreaterThanOrEqual(4.5);
+
+    // Accent highlight vs bgSidebar (now #121810)
+    const accentSidebarCheck = report.checks.find((c) => c.name === "accentHighlight vs bgSidebar");
+    expect(accentSidebarCheck?.passed).toBe(true);
+    expect(accentSidebarCheck?.ratio).toBeGreaterThanOrEqual(3.0);
+    expect(accentSidebarCheck?.ratio).toBeCloseTo(7.08, 1);
   });
 
   it("accurately catches unreadable colors in failing variants", () => {
