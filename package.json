@@ -58,6 +58,16 @@
         "label": "DuskGrove - Ocean (Seamless)",
         "uiTheme": "vs-dark",
         "path": "./themes/DuskGrove-ocean-seamless-color-theme.json"
+      },
+      {
+        "label": "DuskGrove - Lavender",
+        "uiTheme": "vs-dark",
+        "path": "./themes/DuskGrove-lavender-color-theme.json"
+      },
+      {
+        "label": "DuskGrove - Lavender (Seamless)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/DuskGrove-lavender-seamless-color-theme.json"
       }
     ]
   },
