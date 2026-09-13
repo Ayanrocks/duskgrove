@@ -1,8 +1,8 @@
 {
   "name": "duskgrove",
   "displayName": "DuskGrove",
-  "description": "A modular, elegant dark VS Code color theme inspired by twilight forest canopies.",
-  "version": "0.4.2",
+  "description": "A modular, elegant dark & light VS Code color theme family inspired by twilight forest canopies.",
+  "version": "0.5.0",
   "publisher": "duskgrove",
   "type": "module",
   "engines": {
@@ -68,6 +68,11 @@
         "label": "DuskGrove - Lavender (Seamless)",
         "uiTheme": "vs-dark",
         "path": "./themes/DuskGrove-lavender-seamless-color-theme.json"
+      },
+      {
+        "label": "DuskGrove - Forest Light",
+        "uiTheme": "vs",
+        "path": "./themes/DuskGrove-forest-light-color-theme.json"
       }
     ]
   },

@@ -17,7 +17,10 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
   const { ui, semantic } = tokens;
 
   // Programmatically derived shades for cohesive hierarchy
-  const editorLineHighlight = withAlpha(ui.bgSelection, 0.25);
+  const isLight = tokens.meta.type === "light";
+  const editorLineHighlight = isLight
+    ? withAlpha(ui.bgSelection, 0.2)
+    : withAlpha(ui.bgSelection, 0.25);
   const selectionAlpha = withAlpha(ui.bgSelection, 0.6);
   const selectionInactiveAlpha = withAlpha(ui.bgSelection, 0.35);
   const findMatchAlpha = withAlpha(tokens.syntax.numberConstant, 0.4);
@@ -26,21 +29,22 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
   const isOcean = tokens.meta.id.toLowerCase().includes("ocean");
   const isForestSeamless = tokens.meta.id === "DuskGrove-dark-seamless";
 
-  const buttonBg = lighten(ui.bgSelection, 10);
-  const buttonHover = lighten(ui.bgSelection, 18);
+  const buttonBg = isLight ? "#644B9B" : lighten(ui.bgSelection, 10);
+  const buttonFg = isLight ? "#F7F9F6" : ui.fgPrimary;
+  const buttonHover = isLight ? "#513C7E" : lighten(ui.bgSelection, 18);
   const secondaryButtonBg = ui.bgSidebar;
-  const secondaryButtonHover = isOcean ? "#293423" : lighten(ui.bgSidebar, 6);
+  const secondaryButtonHover = isLight ? "#C9D5C3" : isOcean ? "#293423" : lighten(ui.bgSidebar, 6);
 
   // Darkest recessed tier: status bar, inputs, dropdowns (#0C0F12 for Ocean, #0E120C for Forest)
-  const darkestBg = isOcean ? "#0C0F12" : darken(ui.bgEditor, 2);
-  const statusBarBg = isOcean ? "#0C0F12" : darken(ui.bgSidebar, 5);
+  const darkestBg = isLight ? "#E7EAE6" : isOcean ? "#0C0F12" : darken(ui.bgEditor, 2);
+  const statusBarBg = isLight ? "#E7EAE6" : isOcean ? "#0C0F12" : darken(ui.bgSidebar, 5);
   const inputBg = darkestBg;
 
   // Base tier: activity bar folds into bgEditor for Ocean (#101318)
-  const activityBarBg = isOcean ? ui.bgEditor : darken(ui.bgSidebar, 3);
+  const activityBarBg = isLight ? "#C9D5C3" : isOcean ? ui.bgEditor : darken(ui.bgSidebar, 3);
 
   // Hover tier: tab hover (#1F252E for Ocean)
-  const tabHoverBg = isOcean ? "#1F252E" : lighten(ui.bgSidebar, 4);
+  const tabHoverBg = isLight ? "#C9D5C3" : isOcean ? "#1F252E" : lighten(ui.bgSidebar, 4);
 
   const listHover = withAlpha(ui.bgSelection, 0.3);
   const listActive = withAlpha(ui.bgSelection, 0.7);
@@ -52,6 +56,8 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
   const scrollbarHover = withAlpha(ui.bgSelection, 0.5);
 
   const subtleBorder = withAlpha(tokens.syntax.comment, 0.2);
+  const widgetShadow = isLight ? withAlpha("#000000", 0.15) : withAlpha("#000000", 0.5);
+  const statusBarItemHover = isLight ? withAlpha(ui.fgPrimary, 0.1) : withAlpha(ui.fgPrimary, 0.15);
 
   return {
     // Base & Focus
@@ -59,7 +65,7 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
     "sash.hoverBorder": ui.accentHighlight,
     foreground: ui.fgPrimary,
     "selection.background": selectionAlpha,
-    "widget.shadow": withAlpha("#000000", 0.5),
+    "widget.shadow": widgetShadow,
 
     // Window & Title Bar
     "titleBar.activeBackground": ui.bgSidebar,
@@ -141,7 +147,7 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
     "statusBar.debuggingBackground": tokens.syntax.numberConstant,
     "statusBar.debuggingForeground": ui.bgEditor,
     "statusBar.noFolderBackground": statusBarBg,
-    "statusBarItem.hoverBackground": withAlpha(ui.fgPrimary, 0.15),
+    "statusBarItem.hoverBackground": statusBarItemHover,
     "statusBarItem.remoteBackground": tokens.syntax.typeClass,
     "statusBarItem.remoteForeground": ui.bgEditor,
 
@@ -168,7 +174,7 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
 
     // Buttons & Badges
     "button.background": buttonBg,
-    "button.foreground": ui.fgPrimary,
+    "button.foreground": buttonFg,
     "button.hoverBackground": buttonHover,
     "button.secondaryBackground": secondaryButtonBg,
     "button.secondaryForeground": ui.fgPrimary,
@@ -205,21 +211,21 @@ export function generateUiColors(tokens: ColorTokenSet): Record<string, string> 
     // Integrated Terminal ANSI Colors
     "terminal.background": ui.bgEditor,
     "terminal.foreground": ui.fgPrimary,
-    "terminal.ansiBlack": ui.bgEditor,
+    "terminal.ansiBlack": isLight ? "#323B2B" : ui.bgEditor,
     "terminal.ansiRed": semantic.error,
     "terminal.ansiGreen": semantic.success,
     "terminal.ansiYellow": semantic.warning,
     "terminal.ansiBlue": tokens.syntax.function,
     "terminal.ansiMagenta": tokens.syntax.keyword,
     "terminal.ansiCyan": tokens.syntax.typeClass,
-    "terminal.ansiWhite": ui.fgPrimary,
-    "terminal.ansiBrightBlack": ui.fgMuted,
-    "terminal.ansiBrightRed": lighten(semantic.error, 8),
-    "terminal.ansiBrightGreen": lighten(semantic.success, 8),
-    "terminal.ansiBrightYellow": lighten(semantic.warning, 8),
-    "terminal.ansiBrightBlue": lighten(tokens.syntax.function, 8),
-    "terminal.ansiBrightMagenta": lighten(tokens.syntax.keyword, 8),
-    "terminal.ansiBrightCyan": lighten(tokens.syntax.typeClass, 8),
-    "terminal.ansiBrightWhite": lighten(ui.fgPrimary, 10),
+    "terminal.ansiWhite": isLight ? "#525E6F" : ui.fgPrimary,
+    "terminal.ansiBrightBlack": isLight ? "#6E7A6C" : ui.fgMuted,
+    "terminal.ansiBrightRed": isLight ? "#C85A64" : lighten(semantic.error, 8),
+    "terminal.ansiBrightGreen": isLight ? "#5C9958" : lighten(semantic.success, 8),
+    "terminal.ansiBrightYellow": isLight ? "#A67F2E" : lighten(semantic.warning, 8),
+    "terminal.ansiBrightBlue": isLight ? "#3E8A73" : lighten(tokens.syntax.function, 8),
+    "terminal.ansiBrightMagenta": isLight ? "#C06B36" : lighten(tokens.syntax.keyword, 8),
+    "terminal.ansiBrightCyan": isLight ? "#4C9280" : lighten(tokens.syntax.typeClass, 8),
+    "terminal.ansiBrightWhite": isLight ? "#323B2B" : lighten(ui.fgPrimary, 10),
   };
 }

@@ -75,6 +75,9 @@ describe("Theme schema validation", () => {
       "DuskGrove-dark-seamless-color-theme.json",
       "DuskGrove-ocean-color-theme.json",
       "DuskGrove-ocean-seamless-color-theme.json",
+      "DuskGrove-lavender-color-theme.json",
+      "DuskGrove-lavender-seamless-color-theme.json",
+      "DuskGrove-forest-light-color-theme.json",
     ];
 
     for (const filename of themeFilenames) {

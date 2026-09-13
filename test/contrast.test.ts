@@ -9,7 +9,12 @@ import {
   calculateLuminance,
   validateVariantContrast,
 } from "../src/validate/contrast.js";
-import { DuskGroveDark, DuskGroveDarkSeamless, tokenVariants } from "../src/tokens/index.js";
+import {
+  DuskGroveDark,
+  DuskGroveDarkSeamless,
+  DuskGroveForestLight,
+  tokenVariants,
+} from "../src/tokens/index.js";
 import { ColorTokenSet } from "../src/tokens/types.js";
 import { buildTheme } from "../src/build/buildTheme.js";
 
@@ -199,6 +204,100 @@ describe("WCAG relative luminance and contrast engine", () => {
     expect(accentSidebarCheck?.passed).toBe(true);
     expect(accentSidebarCheck?.ratio).toBeGreaterThanOrEqual(3.0);
     expect(accentSidebarCheck?.ratio).toBeCloseTo(7.08, 1);
+  });
+
+  it("ensures DuskGroveForestLight passes all WCAG contrast thresholds against bgEditor", () => {
+    const report = validateVariantContrast(DuskGroveForestLight);
+
+    expect(report.passed).toBe(true);
+
+    const fgPrimaryCheck = report.checks.find((c) => c.name === "fgPrimary vs bgEditor");
+    expect(fgPrimaryCheck?.passed).toBe(true);
+    expect(fgPrimaryCheck?.ratio).toBeGreaterThanOrEqual(4.5);
+
+    const fgMutedCheck = report.checks.find((c) => c.name === "fgMuted vs bgEditor");
+    expect(fgMutedCheck?.passed).toBe(true);
+    expect(fgMutedCheck?.ratio).toBeGreaterThanOrEqual(3.0);
+
+    const accentEditorCheck = report.checks.find((c) => c.name === "accentHighlight vs bgEditor");
+    expect(accentEditorCheck?.passed).toBe(true);
+    expect(accentEditorCheck?.ratio).toBeGreaterThanOrEqual(3.0);
+
+    const accentSidebarCheck = report.checks.find((c) => c.name === "accentHighlight vs bgSidebar");
+    expect(accentSidebarCheck?.passed).toBe(true);
+    expect(accentSidebarCheck?.ratio).toBeGreaterThanOrEqual(3.0);
+
+    const panelActiveFgCheck = report.checks.find(
+      (c) => c.name === "panelTitle.activeForeground vs panel.background",
+    );
+    expect(panelActiveFgCheck?.passed).toBe(true);
+    expect(panelActiveFgCheck?.ratio).toBeGreaterThanOrEqual(3.0);
+
+    const panelInactiveFgCheck = report.checks.find(
+      (c) => c.name === "panelTitle.inactiveForeground vs panel.background",
+    );
+    expect(panelInactiveFgCheck?.passed).toBe(true);
+    expect(panelInactiveFgCheck?.ratio).toBeGreaterThanOrEqual(3.0);
+
+    const panelActiveBorderCheck = report.checks.find(
+      (c) => c.name === "panelTitle.activeBorder vs panel.background",
+    );
+    expect(panelActiveBorderCheck?.passed).toBe(true);
+    expect(panelActiveBorderCheck?.ratio).toBeGreaterThanOrEqual(3.0);
+
+    const semanticChecks = report.checks.filter((c) => c.name.startsWith("semantic."));
+    for (const check of semanticChecks) {
+      expect(check.passed, `Check ${check.name} failed with ratio ${check.ratio}`).toBe(true);
+      expect(check.ratio).toBeGreaterThanOrEqual(3.0);
+    }
+  });
+
+  it("ensures all 10 syntax roles in DuskGroveForestLight pass contrast thresholds against bgEditor", () => {
+    const bg = DuskGroveForestLight.ui.bgEditor;
+    const syntax = DuskGroveForestLight.syntax;
+
+    // Body-weight / primary syntax roles (>= 4.5:1)
+    const primaryRoles: Array<keyof typeof syntax> = [
+      "keyword",
+      "tag",
+      "attribute",
+      "function",
+      "typeClass",
+      "numberConstant",
+      "string",
+      "variable",
+    ];
+
+    for (const role of primaryRoles) {
+      const ratio = calculateContrastRatio(syntax[role], bg);
+      expect(
+        ratio,
+        `Syntax role ${role} (${syntax[role]}) failed contrast check: ${ratio} < 4.5:1`,
+      ).toBeGreaterThanOrEqual(4.5);
+    }
+
+    // De-emphasized roles (>= 3.0:1)
+    const deEmphasizedRoles: Array<keyof typeof syntax> = ["comment", "operatorPunctuation"];
+
+    for (const role of deEmphasizedRoles) {
+      const ratio = calculateContrastRatio(syntax[role], bg);
+      expect(
+        ratio,
+        `Syntax role ${role} (${syntax[role]}) failed contrast check: ${ratio} < 3.0:1`,
+      ).toBeGreaterThanOrEqual(3.0);
+    }
+
+    // Verify contrast ratios against expected locked specifications
+    expect(calculateContrastRatio(syntax.keyword, bg)).toBeCloseTo(5.12, 1);
+    expect(calculateContrastRatio(syntax.tag, bg)).toBeCloseTo(4.87, 1);
+    expect(calculateContrastRatio(syntax.attribute, bg)).toBeCloseTo(4.97, 1);
+    expect(calculateContrastRatio(syntax.function, bg)).toBeCloseTo(5.1, 1);
+    expect(calculateContrastRatio(syntax.typeClass, bg)).toBeCloseTo(4.84, 1);
+    expect(calculateContrastRatio(syntax.numberConstant, bg)).toBeCloseTo(4.73, 1);
+    expect(calculateContrastRatio(syntax.string, bg)).toBeCloseTo(6.43, 1);
+    expect(calculateContrastRatio(syntax.variable, bg)).toBeCloseTo(5.11, 1);
+    expect(calculateContrastRatio(syntax.comment, bg)).toBeCloseTo(3.23, 1);
+    expect(calculateContrastRatio(syntax.operatorPunctuation, bg)).toBeCloseTo(3.14, 1);
   });
 
   it("accurately catches unreadable colors in failing variants", () => {

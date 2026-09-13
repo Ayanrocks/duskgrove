@@ -6,6 +6,7 @@ import { describe, it, expect } from "vitest";
 import {
   DuskGroveDark,
   DuskGroveDarkSeamless,
+  DuskGroveForestLight,
   DuskGroveOcean,
   DuskGroveOceanSeamless,
   tokenVariants,
@@ -434,5 +435,59 @@ describe("buildTheme compiler", () => {
     ].sort();
 
     expect(diffKeys.sort()).toEqual(expected8Keys);
+  });
+
+  it("compiles DuskGroveForestLight into a valid light theme structure", () => {
+    const theme = buildTheme(DuskGroveForestLight);
+
+    expect(theme.name).toBe("DuskGrove - Forest Light");
+    expect(theme.type).toBe("light");
+    expect(theme.semanticHighlighting).toBe(true);
+
+    // Workbench UI surfaces match Forest Light specifications
+    expect(theme.colors["editor.background"]).toBe("#DFE4DD");
+    expect(theme.colors["editor.foreground"]).toBe("#323B2B");
+    expect(theme.colors["sideBar.background"]).toBe("#D4DCD0");
+    expect(theme.colors["sideBar.foreground"]).toBe("#323B2B");
+    expect(theme.colors["editorCursor.foreground"]).toBe("#897244");
+    expect(theme.colors["tab.activeBackground"]).toBe("#DFE4DD");
+    expect(theme.colors["tab.inactiveBackground"]).toBe("#D4DCD0");
+    expect(theme.colors["panel.background"]).toBe("#DFE4DD");
+    expect(theme.colors["button.background"]).toBe("#644B9B");
+    expect(theme.colors["button.foreground"]).toBe("#F7F9F6");
+    expect(theme.colors["button.hoverBackground"]).toBe("#513C7E");
+
+    // Syntax colors match Forest Light tokens
+    const stringRule = theme.tokenColors.find((rule) => {
+      const scopes = Array.isArray(rule.scope) ? rule.scope : [rule.scope];
+      return scopes.includes("string");
+    });
+    expect(stringRule?.settings.foreground).toBe("#2A526F");
+
+    const keywordRule = theme.tokenColors.find((rule) => {
+      const scopes = Array.isArray(rule.scope) ? rule.scope : [rule.scope];
+      return scopes.includes("keyword");
+    });
+    expect(keywordRule?.settings.foreground).toBe("#8B4D1D");
+
+    const functionRule = theme.tokenColors.find((rule) => {
+      const scopes = Array.isArray(rule.scope) ? rule.scope : [rule.scope];
+      return scopes.includes("entity.name.function");
+    });
+    expect(functionRule?.settings.foreground).toBe("#276853");
+
+    const attributeRule = theme.tokenColors.find((rule) => {
+      const scopes = Array.isArray(rule.scope) ? rule.scope : [rule.scope];
+      return scopes.includes("entity.other.attribute-name");
+    });
+    expect(attributeRule?.settings.foreground).toBe("#79592A");
+
+    // Font styles: comments are italic, keywords are not
+    const commentRule = theme.tokenColors.find((rule) => {
+      const scopes = Array.isArray(rule.scope) ? rule.scope : [rule.scope];
+      return scopes.includes("comment");
+    });
+    expect(commentRule?.settings.foreground).toBe("#67836D");
+    expect(commentRule?.settings.fontStyle).toBe("italic");
   });
 });

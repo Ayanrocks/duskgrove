@@ -10,6 +10,7 @@ import { DuskGroveDarkSeamless } from "./DuskGrove-dark-seamless.js";
 import { DuskGroveOcean } from "./DuskGrove-ocean.js";
 import { DuskGroveOceanSeamless } from "./DuskGrove-ocean-seamless.js";
 import { DuskGroveLavender, DuskGroveLavenderSeamless } from "./lavender.js";
+import { DuskGroveForestLight } from "./DuskGrove-forest-light.js";
 
 export * from "./types.js";
 export * from "./DuskGrove-dark.js";
@@ -17,6 +18,7 @@ export * from "./DuskGrove-dark-seamless.js";
 export * from "./DuskGrove-ocean.js";
 export * from "./DuskGrove-ocean-seamless.js";
 export * from "./lavender.js";
+export * from "./DuskGrove-forest-light.js";
 
 /**
  * Registry of all DuskGrove color variants.
@@ -28,4 +30,5 @@ export const tokenVariants: ColorTokenSet[] = [
   DuskGroveOceanSeamless,
   DuskGroveLavender,
   DuskGroveLavenderSeamless,
+  DuskGroveForestLight,
 ];
