@@ -5,46 +5,118 @@
 </p>
 
 <p align="center">
-  <strong>A modular, elegant dark VS Code color theme inspired by twilight forest canopies.</strong>
+  <strong>A modular, elegant dark & light VS Code color theme family inspired by twilight forest canopies.</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/duskgrove/duskgrove-theme/actions"><img src="https://github.com/duskgrove/duskgrove-theme/workflows/CI/badge.svg" alt="CI Status" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT" /></a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=duskgrove.duskgrove"><img src="https://img.shields.io/badge/vscode-%5E1.85.0-blue" alt="VS Code Version" /></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=duskgrove.duskgrove"><img src="https://img.shields.io/visual-studio-marketplace/v/duskgrove.duskgrove?style=for-the-badge&logo=visualstudiocode&logoColor=white&color=BE9E5F&labelColor=182116" alt="Marketplace Version" /></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=duskgrove.duskgrove"><img src="https://img.shields.io/visual-studio-marketplace/i/duskgrove.duskgrove?style=for-the-badge&logo=visualstudiocode&logoColor=white&color=7FC4B8&labelColor=182116" alt="Installs" /></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=duskgrove.duskgrove"><img src="https://img.shields.io/visual-studio-marketplace/r/duskgrove.duskgrove?style=for-the-badge&logo=visualstudiocode&logoColor=white&color=D9B97A&labelColor=182116" alt="Rating" /></a>
+  <a href="https://github.com/duskgrove/duskgrove-theme/actions"><img src="https://img.shields.io/github/actions/workflow/status/duskgrove/duskgrove-theme/ci.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&color=8FC98A&labelColor=182116" alt="Build Status" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-A68FD1?style=for-the-badge&labelColor=182116" alt="License: MIT" /></a>
+  <a href="#accessibility--wcag-compliance"><img src="https://img.shields.io/badge/WCAG_2.1-AA_Compliant-8AB4D8?style=for-the-badge&logo=w3c&logoColor=white&labelColor=182116" alt="WCAG AA" /></a>
 </p>
 
 ---
 
 ## Overview
 
-**DuskGrove** is an atmospheric, deeply legible dark VS Code theme inspired by twilight falling over evergreen woodland canopies. Designed with low eye fatigue and high semantic distinction in mind, it combines rich forest shadows with soft botanical and twilight tones.
+**DuskGrove** is an atmospheric, deeply legible VS Code theme family inspired by twilight falling over evergreen woodland canopies. Designed with low eye fatigue and high semantic distinction in mind, it combines rich forest shadows with soft botanical and twilight tones.
 
-### Aesthetic & Palette
+DuskGrove ships **7 curated theme variants** spanning dark, seamless, and daylight workspaces:
 
-| Token Role                 | Color Name                 |    Hex    |                             Preview                             |
-| :------------------------- | :------------------------- | :-------: | :-------------------------------------------------------------: |
-| **Editor Background**      | Deep Forest Canvas         | `#121810` | ![#121810](https://via.placeholder.com/15/121810/000000?text=+) |
-| **Sidebar Background**     | Pine Bark                  | `#1A2116` | ![#1A2116](https://via.placeholder.com/15/1A2116/000000?text=+) |
-| **Selection & Panel**      | Dusky Heather              | `#474056` | ![#474056](https://via.placeholder.com/15/474056/000000?text=+) |
-| **Primary Foreground**     | Lichen Canopy              | `#B9C6AE` | ![#B9C6AE](https://via.placeholder.com/15/B9C6AE/000000?text=+) |
-| **Muted Foreground**       | Cool Mist Slate            | `#8A95A5` | ![#8A95A5](https://via.placeholder.com/15/8A95A5/000000?text=+) |
-| **Border & Dividers**      | Twilight Slate             | `#757083` | ![#757083](https://via.placeholder.com/15/757083/000000?text=+) |
-| **Accent Highlight**       | Warm Amber Gold            | `#BE9E5F` | ![#BE9E5F](https://via.placeholder.com/15/BE9E5F/000000?text=+) |
-| **Keywords**               | Heather Lavender           | `#A68FD1` | ![#A68FD1](https://via.placeholder.com/15/A68FD1/000000?text=+) |
-| **Strings**                | Sprout Green               | `#A3C98F` | ![#A3C98F](https://via.placeholder.com/15/A3C98F/000000?text=+) |
-| **Numbers & Constants**    | Amber Honey                | `#D9B97A` | ![#D9B97A](https://via.placeholder.com/15/D9B97A/000000?text=+) |
-| **Functions**              | Mountain Stream            | `#8AB4D8` | ![#8AB4D8](https://via.placeholder.com/15/8AB4D8/000000?text=+) |
-| **Types & Classes**        | Glacial Sage               | `#7FC4B8` | ![#7FC4B8](https://via.placeholder.com/15/7FC4B8/000000?text=+) |
-| **Variables**              | Birch Leaf Grey            | `#C7CDB9` | ![#C7CDB9](https://via.placeholder.com/15/C7CDB9/000000?text=+) |
-| **Comments**               | Forest Understory (Italic) | `#5F665A` | ![#5F665A](https://via.placeholder.com/15/5F665A/000000?text=+) |
-| **Operators & Delimiters** | Stone Grey                 | `#6F6A7A` | ![#6F6A7A](https://via.placeholder.com/15/6F6A7A/000000?text=+) |
-| **Tags**                   | Wild Rose Quartz           | `#D18FA8` | ![#D18FA8](https://via.placeholder.com/15/D18FA8/000000?text=+) |
-| **Attributes**             | Golden Ochre               | `#C9A875` | ![#C9A875](https://via.placeholder.com/15/C9A875/000000?text=+) |
-| **Error**                  | Berry Red                  | `#D9707A` | ![#D9707A](https://via.placeholder.com/15/D9707A/000000?text=+) |
-| **Warning**                | Autumn Gold                | `#E0B168` | ![#E0B168](https://via.placeholder.com/15/E0B168/000000?text=+) |
-| **Info**                   | Creek Blue                 | `#8AB4D8` | ![#8AB4D8](https://via.placeholder.com/15/8AB4D8/000000?text=+) |
-| **Success**                | Meadow Green               | `#8FC98A` | ![#8FC98A](https://via.placeholder.com/15/8FC98A/000000?text=+) |
+1. 🌲 **DuskGrove - Forest** — The flagship twilight canopy with distinct editor and sidebar surfaces.
+2. 🍃 **DuskGrove - Forest (Seamless)** — Continuous deep forest canvas for borderless focus.
+3. 🌊 **DuskGrove - Ocean** — Midnight abyssal blue depths with woodland syntax clarity.
+4. 🐋 **DuskGrove - Ocean (Seamless)** — Seamless ocean floor canvas.
+5. 🪻 **DuskGrove - Lavender** — Deep heather violet nightfall with calibrated brightened syntax.
+6. 🔮 **DuskGrove - Lavender (Seamless)** — Seamless heather dusk canvas with unified paneling.
+7. ☀️ **DuskGrove - Forest Light** — A soothing daytime woodland palette with high contrast and zero glare.
+
+---
+
+## Visual Showcase
+
+### DuskGrove - Forest (Flagship)
+
+_Deep mossy forest shadows (`#121810`), pine bark sidebar (`#1A2116`), warm amber active highlights (`#BE9E5F`), and sage canopy text._
+
+<p align="center">
+  <img src="images/preview-forest.png" alt="DuskGrove Forest Preview" width="100%" />
+</p>
+
+### DuskGrove - Forest (Seamless)
+
+_Seamless canvas unifying the editor and sidebar for a distraction-free, borderless aesthetic._
+
+<p align="center">
+  <img src="images/preview-forest-seamless.png" alt="DuskGrove Forest Seamless Preview" width="100%" />
+</p>
+
+### DuskGrove - Forest Light (Day Mode)
+
+_Calibrated daylight palette with soft mint and lichen undertones (`#DFE4DD`), pine tree greens, and warm earth accents._
+
+<p align="center">
+  <img src="images/preview-forest-light.png" alt="DuskGrove Forest Light Preview" width="100%" />
+</p>
+
+### DuskGrove - Lavender & Lavender (Seamless)
+
+_Twilight violet shadows (`#131018`) paired with brightened heather syntax._
+
+<p align="center">
+  <img src="images/preview-lavender.png" alt="DuskGrove Lavender Preview" width="100%" />
+</p>
+
+<p align="center">
+  <img src="images/preview-lavender-seamless.png" alt="DuskGrove Lavender Seamless Preview" width="100%" />
+</p>
+
+---
+
+## Theme Collection
+
+| Variant                             | Mode  | Editor Canvas | Sidebar Surface | Description                                                       |
+| :---------------------------------- | :---: | :-----------: | :-------------: | :---------------------------------------------------------------- |
+| **DuskGrove - Forest**              | Dark  |   `#121810`   |    `#1A2116`    | Flagship twilight forest canopy with distinct sidebar separation. |
+| **DuskGrove - Forest (Seamless)**   | Dark  |   `#121810`   |    `#121810`    | Borderless deep forest canvas connecting explorer and editor.     |
+| **DuskGrove - Ocean**               | Dark  |   `#101318`   |    `#161B21`    | Abyssal ocean blue undertone at 215° hue with forest syntax.      |
+| **DuskGrove - Ocean (Seamless)**    | Dark  |   `#101318`   |    `#101318`    | Borderless midnight marine canvas.                                |
+| **DuskGrove - Lavender**            | Dark  |   `#131018`   |    `#1A1622`    | Deep violet heather shadows with brightened syntax accents.       |
+| **DuskGrove - Lavender (Seamless)** | Dark  |   `#131018`   |    `#131018`    | Borderless twilight heather canvas.                               |
+| **DuskGrove - Forest Light**        | Light |   `#DFE4DD`   |    `#D4DCD0`    | Low-fatigue daylight woodland palette with WCAG AA compliance.    |
+
+---
+
+## Palette & Design Philosophy
+
+DuskGrove uses a **two-family syntax strategy** that avoids random rainbow coloring:
+
+- **Warm Orange Family** (`#E2A06E` keywords, `#C97D46` tags, `#D9B98A` attributes) for declarative and structural constructs.
+- **Sage / Teal / Steel Family** (`#72B5A0` functions, `#8FC9B8` types/classes, `#82A6C0` strings, `#C2CBA0` numbers) for referential and value-bearing tokens.
+- **Warm Neutral Slate** (`#A2A096`) for variables, ensuring high identifier density reads naturally without overwhelming green saturation.
+- **Warm Amber Gold Accent** (`#BE9E5F`) for workbench focus indicators, cursor, active tab borders, and split panel sashes.
+
+### Flagship Forest Palette Tokens
+
+| Token Role              |       Hex Code        | Purpose                                                    |
+| :---------------------- | :-------------------: | :--------------------------------------------------------- |
+| **Editor Canvas**       |       `#121810`       | Deep forest night canvas (low fatigue background)          |
+| **Sidebar Surface**     |       `#1A2116`       | Pine bark Explorer and Activity Bar surface                |
+| **Primary Text**        |       `#B9C6AE`       | Lichen canopy primary foreground                           |
+| **Muted Text**          |       `#8A95A5`       | Cool mist slate for secondary metadata and icons           |
+| **Accent Highlight**    |       `#BE9E5F`       | Warm amber gold for cursor, active tabs, and resize sashes |
+| **Keywords**            |       `#E2A06E`       | Warm peach/orange for declaration and structural keywords  |
+| **Strings**             |       `#82A6C0`       | Steel-blue / azure with clear 44° hue separation from teal |
+| **Numbers & Constants** |       `#C2CBA0`       | Muted olive-honey for numeric literals                     |
+| **Functions**           |       `#72B5A0`       | Mountain stream teal for methods and call expressions      |
+| **Types & Classes**     |       `#8FC9B8`       | Glacial sage for interfaces, types, and class declarations |
+| **Variables**           |       `#A2A096`       | Low-saturation warm gray for calm identifier scanning      |
+| **Comments**            |       `#5B6A5E`       | Italicized forest understory for non-intrusive annotations |
+| **Tags**                |       `#C97D46`       | Terracotta for JSX, HTML, and XML tags                     |
+| **Attributes**          |       `#D9B98A`       | Golden ochre for JSX/HTML attributes and object properties |
+| **Error / Warning**     | `#D9707A` / `#E0B168` | Distinct botanical error berry red and autumn warning gold |
 
 ---
 
@@ -87,34 +159,20 @@ Add the following to your user `settings.json` (`Cmd/Ctrl + Shift + P` -> `Prefe
 }
 ```
 
-### Design Rationale: Scopes Included & Excluded
-
-- **Included (Declaration & Structural Meta)**:
-  - **Declaration & Meta Keywords**: `storage`, `storage.type`, `storage.modifier`, `keyword.other.import`, `keyword.other.package`.
-  - **Types & Classes**: `entity.name.type`, `entity.name.type.class`, `support.type` (covers `typeClass`).
-  - **Attributes**: `entity.other.attribute-name` (covers `attribute`).
-- **Excluded (Control Flow & High-Frequency Constructs)**:
-  - **Control-flow keywords** (`if`, `for`, `return`, `switch`): Deliberately kept upright. These represent logic to scan quickly, not meta-statements.
-  - **Strings**: Excluded because italic glyphs thin the stroke width, working against the extra lightness required for long strings to remain legible at length.
-  - **Variables, Functions, Operators, and Tags**: Excluded as the highest-frequency tokens. Sustained italics across these tokens adds visual noise and reading fatigue with no legibility payoff.
-
 ### Font Rendering & Cursive Comments
 
-VS Code's TextMate rules only support `fontStyle: "italic" | "bold" | "underline" | "strikethrough"` — there is no `"cursive"` value. Applying `italic` in VS Code renders whatever italic glyph design is built into the active typeface. In fonts such as **JetBrains Mono** or **Cascadia Code**, the italic design is a clean synthetic slant rather than cursive letterforms.
+VS Code's TextMate rules only support `fontStyle: "italic" | "bold" | "underline" | "strikethrough"`. Applying `italic` in VS Code renders whatever italic glyph design is built into your active editor font.
 
-Because `editor.fontFamily` is a global editor setting, font families cannot be scoped per-token (comments cannot use a separate typeface from the rest of the editor). To achieve true cursive comments on top of DuskGrove's locked `fontStyle: "italic"`, pair the theme with a monospace typeface whose italic weight is drawn with true cursive/script letterforms.
+- **Victor Mono** (free, open source) features dedicated cursive script letterforms designed specifically for code comments and keywords.
+- **JetBrains Mono** and **Cascadia Code** feature clean synthetic italic slants that pair seamlessly with DuskGrove.
 
-**Victor Mono** (free, open source) is the standout choice — it provides dedicated cursive italic letterforms designed specifically for code comments and keywords.
-
-#### Recommended Font Settings (Victor Mono)
+#### Recommended Font Configuration (Victor Mono)
 
 ```json
-"editor.fontFamily": "Victor Mono",
+"editor.fontFamily": "Victor Mono, JetBrains Mono, monospace",
 "editor.fontLigatures": true,
 "editor.fontWeight": "500"
 ```
-
-With Victor Mono selected, DuskGrove's locked italic comments render in genuine cursive script; with standard fonts (such as JetBrains Mono or Cascadia Code), they fall back cleanly to slanted roman.
 
 ---
 
@@ -122,19 +180,20 @@ With Victor Mono selected, DuskGrove's locked italic comments render in genuine 
 
 DuskGrove is structured so that **color values exist in exactly one place**: `src/tokens/`.
 
-The build engine (`src/build/`) transforms semantic tokens into:
+The build compiler (`src/build/`) transforms semantic tokens into:
 
 1. **Workbench UI colors** (`colors` in `themes/*.json`) via `uiMapping.ts`.
 2. **TextMate syntax scopes** (`tokenColors` in `themes/*.json`) via `syntaxMapping.ts`.
 3. **LSP semantic highlights** (`semanticTokenColors` in `themes/*.json`) via `semanticTokenMapping.ts`.
 
-All intermediate lightness and alpha values are computed mathematically (using HSL in `colorUtils.ts`), eliminating arbitrary one-off color literals.
-
 ```
 src/
 ├── tokens/                     # SOURCE OF TRUTH (one file per variant)
 │   ├── types.ts                # Strict ColorTokenSet TypeScript interface
-│   ├── DuskGrove-dark.ts       # DuskGrove Dark palette definition
+│   ├── DuskGrove-dark.ts       # Flagship Forest palette
+│   ├── DuskGrove-forest-light.ts# Forest Light palette
+│   ├── DuskGrove-ocean.ts      # Ocean palette
+│   ├── lavender.ts             # Lavender palette
 │   └── index.ts                # Central variant registry array
 ├── build/                      # PURE COMPILER & MAPPING RULES
 │   ├── colorUtils.ts           # HSL lighten/darken & alpha calculation
@@ -150,132 +209,53 @@ src/
 
 ---
 
-## How to Add a New Theme Variant (4 Steps)
-
-Adding a completely new theme variant (such as `DuskGrove Light` or `DuskGrove High Contrast`) requires **zero changes** to compiler logic, workbench mappings, or TextMate rules.
-
-### Step 1: Create a token file
-
-Create `src/tokens/DuskGrove-light.ts` conforming to `ColorTokenSet`:
-
-```ts
-import { ColorTokenSet } from "./types.js";
-
-export const DuskGroveLight: ColorTokenSet = {
-  meta: {
-    id: "DuskGrove-light",
-    label: "DuskGrove Light",
-    type: "light",
-  },
-  ui: {
-    bgEditor: "#F4F6F2",
-    bgSidebar: "#E9EDE6",
-    bgSelection: "#C9D4C2",
-    bgPanel: "#E9EDE6",
-    border: "#B2BDB0",
-    fgMuted: "#6B7568",
-    fgPrimary: "#232A20",
-    accentHighlight: "#C78C26",
-  },
-  syntax: {
-    keyword: "#6D4C9F",
-    string: "#3E7A28",
-    numberConstant: "#94681A",
-    function: "#24689E",
-    typeClass: "#1F7A6A",
-    variable: "#2A3626",
-    comment: "#7F8A7C",
-    operatorPunctuation: "#544E5E",
-    tag: "#993B5D",
-    attribute: "#8C6321",
-  },
-  semantic: {
-    error: "#B82E3B",
-    warning: "#9E6814",
-    info: "#24689E",
-    success: "#2E7D32",
-  },
-};
-```
-
-### Step 2: Register the variant
-
-Open `src/tokens/index.ts` and add your variant to `tokenVariants`:
-
-```ts
-import { DuskGroveLight } from "./DuskGrove-light.js";
-
-export const tokenVariants: ColorTokenSet[] = [
-  DuskGroveDark,
-  DuskGroveLight, // <- Simply append here
-];
-```
-
-### Step 3: Run the build generator
+## Local Development
 
 ```bash
-npm run build:themes
-```
-
-The generator will:
-
-- Check WCAG contrast compliance (`contrast.ts`).
-- Validate the generated structure against the VS Code schema (`schema.ts`).
-- Output `themes/DuskGrove-light-color-theme.json`.
-- Automatically synchronize the `contributes.themes` array in `package.json`.
-
-### Step 4: Run the test suite
-
-```bash
-npm test
-```
-
-All automated tests will verify your new variant's schema and contrast ratios!
-
----
-
-## Local Development & Testing
-
-### Installation
-
-```bash
+# 1. Install dependencies
 npm install
-```
 
-### Build Theme Artifacts
-
-```bash
+# 2. Compile all theme variants deterministically
 npm run build:themes
-```
 
-### Run Tests
-
-```bash
+# 3. Run automated tests (compiler, schema, contrast)
 npm test
-```
 
-### Typecheck & Lint
-
-```bash
+# 4. Typecheck and lint
 npm run typecheck
 npm run lint
 npm run format:check
-```
 
-### Package Extension (.vsix)
-
-```bash
+# 5. Package extension (.vsix)
 npm run package
 ```
+
+---
+
+## Accessibility & WCAG Compliance
+
+DuskGrove is engineered from the ground up for high readability and low eye strain:
+
+- **WCAG 2.1 AA Compliant**: All body text maintains $\ge 4.5:1$ contrast against the editor background.
+- **De-emphasized Roles**: Comments and UI chrome maintain $\ge 3.0:1$ non-text contrast.
+- **Automated Contrast Testing**: Contrast ratios are continuously verified by mathematical tests in `test/contrast.test.ts`.
 
 ---
 
 ## Security & Trust Properties
 
 1. **Zero Runtime Code:** DuskGrove ships only static JSON theme definitions. No extension host JavaScript/TypeScript is executed at runtime.
-2. **Minimal Surface Area:** All dependencies are `devDependencies` only and excluded from packaging via `.vscodeignore`.
-3. **Reproducible Builds:** Themes are deterministically compiled from token files.
-4. **Accessible by Design:** All colors are verified against WCAG AA standards (≥ 4.5:1 for primary text, ≥ 3.0:1 for muted text and semantic indicators).
+2. **Minimal Surface Area:** All dependencies are `devDependencies` only and completely excluded from packaging via `.vscodeignore`.
+3. **Reproducible Builds:** Themes are deterministically compiled from token definitions.
+
+---
+
+## Documentation & Contributing
+
+- 📖 **[Contributing Guide](CONTRIBUTING.md)**: Guidelines for contributing code, reporting issues, and authoring new variants.
+- 📋 **[Production Release Checklist](docs/PRODUCTION_CHECKLIST.md)**: Pre-flight checklist for releases and marketplace publication.
+- 📝 **[Changelog](CHANGELOG.md)**: History of releases and notable updates following Keep a Changelog.
+- 🤝 **[Code of Conduct](CODE_OF_CONDUCT.md)**: Community standards and expectations.
 
 ---
 

@@ -5,7 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.5.0] - 2026-09-14
+
+### Added
+
+- **Multi-Variant Collection (7 Curated Variants)**: Expanded DuskGrove into a complete theme suite:
+  - **DuskGrove - Forest Light**: Full daylight woodland palette built on soft sage/lichen canvas (`#DFE4DD`) with calibrated dark pine syntax (`#276853`, `#8B4D1D`, `#2A526F`) ensuring zero glare and strict WCAG AA contrast compliance ($\ge 4.5:1$ body, $\ge 3.0:1$ chrome).
+  - **DuskGrove - Lavender** & **Lavender (Seamless)**: Deep violet twilight shadows (`#131018`) with brightened syntax tokens (`keyword` `#E8B38A`, `function` `#86BFAD`, `string` `#97B5CB`).
+  - **DuskGrove - Ocean** & **Ocean (Seamless)**: Abyssal ocean undertone at 215° hue (`#101318` canvas, `#161B21` sidebar) preserving core woodland syntax clarity.
+  - **DuskGrove - Forest (Seamless)**: Borderless deep forest canvas unifying explorer and editor.
+- **Brand & Asset Refresh**:
+  - High-resolution 512x512 squircle emblem icon (`images/icon.png`) featuring faceted evergreen pine geometry with glowing lavender and sage facets, ambient warm amber dusk moon, and subtle twilight shadow.
+  - High-fidelity theme screenshot previews in `images/` embedded in `README.md`.
+  - Modern Shields.io GitHub & Marketplace badges styled with official logos and DuskGrove brand colors.
+- **Production & Contribution Standards**:
+  - Added [`docs/PRODUCTION_CHECKLIST.md`](docs/PRODUCTION_CHECKLIST.md) pre-flight release guide.
+  - Enhanced [CONTRIBUTING.md](CONTRIBUTING.md) with modern token creation template and WCAG AA requirements.
+  - Cleaned up root `.vsix` binaries and refined `.vscodeignore` to eliminate packaging leaks.
+
+## [0.4.2] - 2026-09-10
 
 ### Added
 
