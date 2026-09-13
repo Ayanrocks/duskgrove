@@ -3,7 +3,7 @@
   "displayName": "DuskGrove",
   "description": "A modular, elegant dark & light VS Code color theme family inspired by twilight forest canopies.",
   "version": "0.5.0",
-  "publisher": "duskgrove",
+  "publisher": "Ayanrocks",
   "type": "module",
   "engines": {
     "vscode": "^1.85.0"
@@ -22,7 +22,7 @@
   "icon": "images/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/duskgrove/duskgrove-theme"
+    "url": "https://github.com/Ayanrocks/duskgrove"
   },
   "license": "MIT",
   "scripts": {

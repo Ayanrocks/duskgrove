@@ -9,10 +9,10 @@
 </p>
 
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=duskgrove.duskgrove"><img src="https://img.shields.io/visual-studio-marketplace/v/duskgrove.duskgrove?style=for-the-badge&logo=visualstudiocode&logoColor=white&color=BE9E5F&labelColor=182116" alt="Marketplace Version" /></a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=duskgrove.duskgrove"><img src="https://img.shields.io/visual-studio-marketplace/i/duskgrove.duskgrove?style=for-the-badge&logo=visualstudiocode&logoColor=white&color=7FC4B8&labelColor=182116" alt="Installs" /></a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=duskgrove.duskgrove"><img src="https://img.shields.io/visual-studio-marketplace/r/duskgrove.duskgrove?style=for-the-badge&logo=visualstudiocode&logoColor=white&color=D9B97A&labelColor=182116" alt="Rating" /></a>
-  <a href="https://github.com/duskgrove/duskgrove-theme/actions"><img src="https://img.shields.io/github/actions/workflow/status/duskgrove/duskgrove-theme/ci.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&color=8FC98A&labelColor=182116" alt="Build Status" /></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=Ayanrocks.duskgrove"><img src="https://img.shields.io/visual-studio-marketplace/v/Ayanrocks.duskgrove?style=for-the-badge&logo=visualstudiocode&logoColor=white&color=BE9E5F&labelColor=182116" alt="Marketplace Version" /></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=Ayanrocks.duskgrove"><img src="https://img.shields.io/visual-studio-marketplace/i/Ayanrocks.duskgrove?style=for-the-badge&logo=visualstudiocode&logoColor=white&color=7FC4B8&labelColor=182116" alt="Installs" /></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=Ayanrocks.duskgrove"><img src="https://img.shields.io/visual-studio-marketplace/r/Ayanrocks.duskgrove?style=for-the-badge&logo=visualstudiocode&logoColor=white&color=D9B97A&labelColor=182116" alt="Rating" /></a>
+  <a href="https://github.com/Ayanrocks/duskgrove/actions"><img src="https://img.shields.io/github/actions/workflow/status/Ayanrocks/duskgrove/ci.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&color=8FC98A&labelColor=182116" alt="Build Status" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-A68FD1?style=for-the-badge&labelColor=182116" alt="License: MIT" /></a>
   <a href="#accessibility--wcag-compliance"><img src="https://img.shields.io/badge/WCAG_2.1-AA_Compliant-8AB4D8?style=for-the-badge&logo=w3c&logoColor=white&labelColor=182116" alt="WCAG AA" /></a>
 </p>

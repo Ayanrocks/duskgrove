@@ -20,8 +20,8 @@ All contributors are expected to uphold our [Code of Conduct](CODE_OF_CONDUCT.md
 ### Setup
 
 ```bash
-git clone https://github.com/duskgrove/duskgrove-theme.git
-cd duskgrove-theme
+git clone https://github.com/Ayanrocks/duskgrove.git
+cd duskgrove
 npm install
 ```
 

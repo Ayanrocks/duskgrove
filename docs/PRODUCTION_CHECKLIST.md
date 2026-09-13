@@ -25,7 +25,7 @@ A rigorous pre-flight checklist for releasing updates to the **DuskGrove** VS Co
   - `"name"`: `duskgrove`
   - `"displayName"`: `DuskGrove`
   - `"description"`: Clear, descriptive summary under 120 characters.
-  - `"publisher"`: Verified publisher ID matching Marketplace credentials (`duskgrove`).
+  - `"publisher"`: Verified publisher ID matching Marketplace credentials (`Ayanrocks`).
   - `"icon"`: Relative path pointing to `images/icon.png` (512x512 or 256x256 PNG).
   - `"repository"`: Valid GitHub URL.
   - `"categories"`: `["Themes"]`.
@@ -131,7 +131,7 @@ A rigorous pre-flight checklist for releasing updates to the **DuskGrove** VS Co
     - Notification badges and search highlights.
 - [ ] **Uninstall Test Extension**:
   ```bash
-  code --uninstall-extension duskgrove.duskgrove
+  code --uninstall-extension Ayanrocks.duskgrove
   ```
 
 ---
@@ -147,7 +147,7 @@ A rigorous pre-flight checklist for releasing updates to the **DuskGrove** VS Co
   ```bash
   npx @vscode/vsce publish
   ```
-  _(Requires `VSCE_PAT` Personal Access Token configured or logged in via `vsce login duskgrove`)_
+  _(Requires `VSCE_PAT` Personal Access Token configured or logged in via `vsce login Ayanrocks`)_
 - [ ] **Publish to Open VSX Registry (Optional / Recommended)**:
   ```bash
   npx ovsx publish
@@ -158,7 +158,8 @@ A rigorous pre-flight checklist for releasing updates to the **DuskGrove** VS Co
 ## 9. Post-Release Verification
 
 - [ ] **Marketplace Listing**:
-  - Visit `https://marketplace.visualstudio.com/items?itemName=duskgrove.duskgrove`.
+  - Visit `https://marketplace.visualstudio.com/items?itemName=Ayanrocks.duskgrove`.
   - Verify icon, badges, preview screenshots, theme description, and changelog render properly.
 - [ ] **In-App Update**:
   - Confirm extension appears in VS Code extension search and updates smoothly.
+
