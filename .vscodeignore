@@ -3,10 +3,17 @@
 src/**
 test/**
 node_modules/**
+docs/**
 .eslintrc*
 .prettier*
 .editorconfig
+.gitignore
 tsconfig.json
 vitest.config.ts
 **/*.ts
 **/*.map
+*.vsix
+.DS_Store
+**/.DS_Store
+coverage/**
+.vitest/**
